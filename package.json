@@ -1,10 +1,10 @@
 {
   "name": "ee_backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +13,15 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql": "^2.18.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ritacardoso17/eshtEvents_Backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ritacardoso17/eshtEvents_Backend/issues"
+  },
+  "homepage": "https://github.com/ritacardoso17/eshtEvents_Backend#readme",
+  "description": ""
 }
