@@ -7,6 +7,7 @@ const uniformRouter = require("./routes/uniformRouter")
 const componentRouter = require("./routes/componenttRouter")
 const rentsRouter = require("./routes/rentsRouter")
 const evenTypeRouter = require("./routes/evenTypeRouter")
+const decorationRouter = require("./routes/decorationRouter") 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,6 +20,8 @@ app.use(uniformRouter)
 app.use(componentRouter)
 app.use(rentsRouter)
 app.use(evenTypeRouter)
+app.use(decorationRouter)
+
 
 app.listen(3000, function () {
     console.log('Server running at http://localhost:3000/%27');

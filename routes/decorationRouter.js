@@ -3,7 +3,7 @@ var router = Router()
 
 const controller = require("../controllers/EventReservation/decoration/decorationController")
 
-router.post("/decoration", controller.addDecoration)
+router.post("/decorations", controller.addDecoration)
 // router.delete("/decoration/:id", controller.removeDecoration)
 // router.put("/decoration/:id", controller.updateDecoration)
 

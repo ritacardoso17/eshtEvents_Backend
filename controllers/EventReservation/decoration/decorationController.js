@@ -3,7 +3,7 @@ const decorationFunctions = require("./decorationFunctions")
 function addDecoration(req, result) {
     let description = req.body.description
     let img = ""
-    decorationFunctions.addEvenType(description, img, (error, sucess) => {
+    decorationFunctions.addDecoration(description, img, (error, sucess) => {
         if (error) {
             throw error
             return
