@@ -24,5 +24,14 @@ function removeDecoration (id, callback)  {
 
     connection.end()
 }
+function updateDecoration(description, id, callback) {
+    connection.connect()
+    const sql = "UPDATE decoracao SET descritivo=? WHERE id_decoracao=? "
+    connection.query(sql, [description, id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Decoração Editada" })
+    })
+    connection.end()
+}
 
-module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration }
+module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration, updateDecoration:updateDecoration }
