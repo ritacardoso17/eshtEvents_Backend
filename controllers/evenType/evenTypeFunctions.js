@@ -13,3 +13,15 @@ exports.addEvenType = (description, callback) => {
 
     connection.end()
 }
+
+exports.removeEvenType = (id, callback) => {
+    connection.connect()
+
+    const sql = "DELETE FROM tipo_reserva WHERE id_tipo_reserva = ?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Tipo de Evento Removido" })
+    })
+
+    connection.end()
+}

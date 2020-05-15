@@ -11,5 +11,16 @@ function addEvenType(req, result) {
     })
 
 }
+function removeEvenType(req, result) {
+    let id = req.params.id
+    evenTypeFunctions.removeEvenType(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
 
-module.exports = { addEvenType: addEvenType }
+}
+
+module.exports = { addEvenType: addEvenType, removeEvenType: removeEvenType }
