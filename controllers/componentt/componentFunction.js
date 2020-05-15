@@ -2,7 +2,7 @@ const dbConfig = require("../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
-exports.addComponent = (name,callback) => {
+function addComponent(name,callback)  {
     connection.connect()
 
     const sql = "INSERT INTO componente (descritivo) VALUES (?)"
@@ -13,3 +13,5 @@ exports.addComponent = (name,callback) => {
 
     connection.end()
 }
+
+module.exports = {addComponent:addComponent}

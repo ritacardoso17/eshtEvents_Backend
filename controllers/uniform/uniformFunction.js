@@ -2,7 +2,7 @@ const dbConfig = require("../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
-exports.addUniform = (name, img, callback) => {
+function addUniform(name, img, callback) {
     connection.connect()
 
     const sql = "INSERT INTO farda (descritivo,img) VALUES (?,?)"
@@ -14,7 +14,7 @@ exports.addUniform = (name, img, callback) => {
     connection.end()
 }
 
-exports.removeUniform = (id, callback) => {
+function removeUniform(id, callback) {
     connection.connect()
 
     const sql = "DELETE FROM farda WHERE id_farda = ?"
@@ -26,7 +26,7 @@ exports.removeUniform = (id, callback) => {
     connection.end()
 }
 
-exports.updateUniform = (name, img, id, callback) => {
+function updateUniform(name, img, id, callback) {
     connection.connect()
     const sql = "UPDATE farda SET descritivo=?, img=? WHERE id_farda=? "
     connection.query(sql, [name, img, id], function (error, results) {
@@ -34,4 +34,10 @@ exports.updateUniform = (name, img, id, callback) => {
         callback(null, { sucess: true, message: "Farda Editada" })
     })
     connection.end()
+}
+
+module.exports = {
+    addUniform: addUniform,
+    removeUniform: removeUniform,
+    updateUniform: updateUniform
 }
