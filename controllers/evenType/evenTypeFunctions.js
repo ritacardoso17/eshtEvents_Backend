@@ -25,4 +25,14 @@ function removeEvenType (id, callback)  {
 
     connection.end()
 }
-module.exports = {addEvenType:addEvenType,removeEvenType:removeEvenType}
+
+function updateEvenType(description, id, callback) {
+    connection.connect()
+    const sql = "UPDATE tipo_reserva SET descritivo=? WHERE id_tipo_reserva=? "
+    connection.query(sql, [description, id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Tipo de Evento Editado" })
+    })
+    connection.end()
+}
+module.exports = {addEvenType:addEvenType, removeEvenType:removeEvenType, updateEvenType:updateEvenType}

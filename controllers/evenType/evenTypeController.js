@@ -22,5 +22,16 @@ function removeEvenType(req, result) {
     })
 
 }
+function updateEvenType(req, result) {
+    let description = req.body.description
+    let id = req.params.id
+    uniformFunctions.updateEvenType(description,id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 
-module.exports = { addEvenType: addEvenType, removeEvenType: removeEvenType }
+module.exports = { addEvenType: addEvenType, removeEvenType: removeEvenType, updateEvenType: updateEvenType }
