@@ -13,5 +13,16 @@ function addDecoration  (description, img, callback) {
 
     connection.end()
 }
+function removeDecoration (id, callback)  {
+    connection.connect()
 
-module.exports = { addDecoration: addDecoration }
+    const sql = "DELETE FROM decoracao WHERE id_decoracao = ?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Decoração Removida" })
+    })
+
+    connection.end()
+}
+
+module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration }

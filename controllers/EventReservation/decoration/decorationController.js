@@ -12,5 +12,16 @@ function addDecoration(req, result) {
     })
 
 }
+function removeDecoration(req, result) {
+    let id = req.params.id
+    decorationFunctions.removeDecoration(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
 
-module.exports = { addDecoration: addDecoration }
+}
+
+module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration }
