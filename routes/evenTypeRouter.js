@@ -1,7 +1,7 @@
 const Router = require("express").Router
 var router = Router()
 
-const controller = require("../controllers/evenType/evenTypeController")
+const controller = require("../controllers/EventReservation/evenType/evenTypeController")
 
 router.post("/evenTypes", controller.addEvenType)
 router.delete("/evenTypes/:id", controller.removeEvenType)

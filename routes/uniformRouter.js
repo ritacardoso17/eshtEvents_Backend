@@ -1,7 +1,7 @@
 const Router = require("express").Router
 var router = Router()
  
-const controller = require("../controllers/uniform/uniformController")
+const controller = require("../controllers/EventReservation/uniform/uniformController")
 router.post("/uniforms", controller.addUniform)
 router.delete("/uniforms/:id", controller.removeUniform)
 router.put("/uniforms/:id", controller.updateUniform)

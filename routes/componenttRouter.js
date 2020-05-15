@@ -1,7 +1,7 @@
 const Router = require("express").Router
 var router = Router()
 
-const controller = require("../controllers/componentt/componentController")
+const controller = require("../controllers/Menus/componentt/componentController")
 
 router.post("/components", controller.addComponent)
 
