@@ -7,8 +7,10 @@ const uniformRouter = require("./routes/uniformRouter")
 const componentRouter = require("./routes/componenttRouter")
 const rentsRouter = require("./routes/rentsRouter")
 const evenTypeRouter = require("./routes/evenTypeRouter")
-const menuRouter = require("./routes/menuRouter")
-const decorationRouter = require("./routes/decorationRouter") 
+/* const menuRouter = require("./routes/menuRouter") */
+const decorationRouter = require("./routes/decorationRouter")
+const reservationRouter = require("./routes/reservationRouter")
+const roomsRouter = require("./routes/roomsRouter")
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,9 +23,10 @@ app.use(uniformRouter)
 app.use(componentRouter)
 app.use(rentsRouter)
 app.use(evenTypeRouter)
-app.use(menuRouter)
+/* app.use(menuRouter) */
 app.use(decorationRouter)
-
+app.use(reservationRouter)
+app.use(roomsRouter)
 
 app.listen(3000, function () {
     console.log('Server running at http://localhost:3000/%27');
