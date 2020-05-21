@@ -1,4 +1,4 @@
-const rentsFunctions = require("./reservationFunctions")
+const reservationFunctions = require("./reservationFunctions")
 
 function addReservations(req, result){
     let id_extra = req.body.id_extra
@@ -12,7 +12,7 @@ function addReservations(req, result){
     let id_local = req.body.id_local
     let id_decoration = req.body.id_decoration
 
-    rentsFunctions.addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, (error, sucess) => {
+    reservationFunctions.addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -23,7 +23,7 @@ function addReservations(req, result){
 
 function removeReservations(req, result) {
     let id = req.params.id
-    rentsFunctions.removeReservations(id, (error, sucess) => {
+    reservationFunctions.removeReservations(id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -43,7 +43,7 @@ function updateReservations(req, result) {
     let id_local = req.body.id_local
     let id_decoration = req.body.id_decoration
 
-    rentsFunctions.updateReservations(id, id_extra, n_people, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, (error, sucess) => {
+    reservationFunctions.updateReservations(id, id_extra, n_people, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, (error, sucess) => {
         if (error) {
             throw error
             return
