@@ -21,9 +21,9 @@ function addReservations(req, result){
     })
 }
 
-/* function removeReservations(req, result) {
+function removeReservations(req, result) {
     let id = req.params.id
-    rentsFunctions.removeRents(id, (error, sucess) => {
+    rentsFunctions.removeReservations(id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -34,18 +34,23 @@ function addReservations(req, result){
 
 function updateReservations(req, result) {
     let id = req.params.id
+    let id_extra = req.params.id_extra
+    let n_people = req.params.n_people
     let date_required = req.body.date_required
-    let duration = req.body.duration
-    let id_room = req.body.id_room
+    let id_uniform = req.body.id_uniform
+    let id_reservType = req.body.id_reservType
+    let id_menu = req.body.id_menu
+    let id_local = req.body.id_local
+    let id_decoration = req.body.id_decoration
 
-    rentsFunctions.updateRents(id, date_required, duration, id_room, (error, sucess) => {
+    rentsFunctions.updateReservations(id, id_extra, n_people, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, (error, sucess) => {
         if (error) {
             throw error
             return
         }
         result.json(sucess)
     })
-} */
+}
 
 module.exports = { 
     addReservations: addReservations,
