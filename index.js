@@ -7,6 +7,7 @@ const uniformRouter = require("./routes/uniformRouter")
 const componentRouter = require("./routes/componenttRouter")
 const rentsRouter = require("./routes/rentsRouter")
 const evenTypeRouter = require("./routes/evenTypeRouter")
+const menuRouter = require("./routes/menuRouter")
 const decorationRouter = require("./routes/decorationRouter") 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(uniformRouter)
 app.use(componentRouter)
 app.use(rentsRouter)
 app.use(evenTypeRouter)
+app.use(menuRouter)
 app.use(decorationRouter)
 
 
