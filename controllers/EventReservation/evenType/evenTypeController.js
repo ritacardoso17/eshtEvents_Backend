@@ -25,7 +25,7 @@ function removeEvenType(req, result) {
 function updateEvenType(req, result) {
     let description = req.body.description
     let id = req.params.id
-    uniformFunctions.updateEvenType(description,id, (error, sucess) => {
+    evenTypeFunctions.updateEvenType(description,id, (error, sucess) => {
         if (error) {
             throw error
             return
