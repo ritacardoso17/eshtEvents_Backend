@@ -2,7 +2,6 @@ const dbConfig = require("../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
-// VER O PORQUE DA DESCRIÇÃO ESTAR NULL
 function addRooms(description, callback) {
     connection.connect()
 
@@ -37,8 +36,20 @@ function updateRooms(id, description, callback) {
     connection.end()
 }
 
+// FALTA GETS
+/* function getRooms(id, description, callback) {
+    connection.connect()
+    const sql = "SELECT tipo_espaco SET descritivo=? WHERE id_espaco=? "
+    connection.query(sql, [id, description], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Espaço Editado" })
+    })
+    connection.end()
+} */
+
 module.exports = { 
     addRooms: addRooms,
     removeRooms: removeRooms,
-    updateRooms: updateRooms
+    updateRooms: updateRooms/* ,
+    getRooms: getRooms */
 }
