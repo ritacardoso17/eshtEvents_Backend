@@ -36,8 +36,30 @@ function updateComponents(id, name, callback) {
     connection.end()
 }
 
+function getComponents(id, name, callback) {
+    connection.connect()
+    const sql = "SELECT descritivo FROM componente"
+    connection.query(sql, [id, name], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Componente Buscado" })
+    })
+    connection.end()
+}
+
+function getComponentsId(id, name, callback) {
+    connection.connect()
+    const sql = "SELECT descritivo FROM componente WHERE id_componente=?"
+    connection.query(sql, [id, name], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Componente id Buscado" })
+    })
+    connection.end()
+}
+
 module.exports = {
     addComponents: addComponents,
     removeComponents: removeComponents,
-    updateComponents: updateComponents
+    updateComponents: updateComponents,
+    getComponents: getComponents,
+    getComponentsId: getComponentsId
 }
