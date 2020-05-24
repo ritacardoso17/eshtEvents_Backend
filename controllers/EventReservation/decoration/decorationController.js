@@ -34,5 +34,27 @@ function updateDecoration(req, result) {
         result.json(sucess)
     })
 }
+function getDecoration(req, result) {
+    let description = req.body.description
+    let id = req.params.id
+    decorationFunctions.getDecoration(description,id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function getDecorationID(req, result) {
+     let id = req.params.id
+    decorationFunctions.getDecorationID(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 
-module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration, updateDecoration:updateDecoration }
+
+module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration, updateDecoration:updateDecoration,getDecoration:getDecoration,getDecorationID:getDecorationID }

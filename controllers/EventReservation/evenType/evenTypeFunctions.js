@@ -2,7 +2,7 @@ const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
-function addEvenType  (description, callback) {
+function addEvenType(description, callback) {
     connection.connect()
 
     const sql = "INSERT INTO tipo_reserva (descritivo) VALUES (?)"
@@ -14,7 +14,7 @@ function addEvenType  (description, callback) {
     connection.end()
 }
 
-function removeEvenType (id, callback)  {
+function removeEvenType(id, callback) {
     connection.connect()
 
     const sql = "DELETE FROM tipo_reserva WHERE id_tipo_reserva = ?"
@@ -35,4 +35,30 @@ function updateEvenType(description, id, callback) {
     })
     connection.end()
 }
-module.exports = {addEvenType:addEvenType, removeEvenType:removeEvenType, updateEvenType:updateEvenType}
+function getEvenType(callback) {
+    connection.connect()
+    const sql = "SELECT descritivo FROM tipo_reserva"
+    connection.query(sql, function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+
+function getEvenTypeID(id, callback) {
+    connection.connect()
+   
+    const sql = "SELECT descritivo FROM tipo_reserva WHERE id_tipo_reserva = ?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+
+    connection.end()
+}
+
+module.exports = {
+    addEvenType: addEvenType, removeEvenType: removeEvenType,
+    updateEvenType: updateEvenType, getEvenType: getEvenType,
+    getEvenTypeID: getEvenTypeID
+}

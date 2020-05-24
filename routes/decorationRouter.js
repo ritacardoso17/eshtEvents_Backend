@@ -6,5 +6,7 @@ const controller = require("../controllers/EventReservation/decoration/decoratio
 router.post("/decorations", controller.addDecoration)
 router.delete("/decorations/:id", controller.removeDecoration)
 router.put("/decorations/:id", controller.updateDecoration)
+router.get("/decorations", controller.getDecoration)
+router.get("/decorations/:id", controller.getDecorationID)
 
 module.exports = router

@@ -33,5 +33,23 @@ function updateDecoration(description, id, callback) {
     })
     connection.end()
 }
+function getDecoration(description, id, callback) {
+    connection.connect()
+    const sql = "SELECT descritivo FROM decoracao"
+    connection.query(sql, [description, id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+function getDecorationID(id, callback) {
+    connection.connect()
+    const sql = "SELECT descritivo FROM decoracao WHERE id_decoracao=? "
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
 
-module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration, updateDecoration:updateDecoration }
+module.exports = { addDecoration: addDecoration, removeDecoration:removeDecoration, updateDecoration:updateDecoration,getDecoration:getDecoration,getDecorationID:getDecorationID }
