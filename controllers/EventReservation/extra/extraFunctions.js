@@ -36,9 +36,19 @@ function updateExtra(name, id, callback) {
 
     connection.end()
 }
+function getExtra(callback) {
+    connection.connect()
+    const sql = "SELECT descritivo FROM extra"
+    connection.query(sql, function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
 module.exports = {
     addExtra: addExtra,
     removeExtra: removeExtra,
-    updateExtra: updateExtra
+    updateExtra: updateExtra,
+    getExtra:getExtra
 }
 

@@ -33,7 +33,7 @@ function updateWorkshops(req, result) {
     let price = req.body.price
     let id_local = req.body.id_local
 
-    workshopFunctions.updateWorkshops(id, description, n_vacancies, date_hour, price, id_local, (error, sucess) => {
+    workshopFunctions.updateWorkshops(description, n_vacancies, date_hour, price, id_local,id,  (error, sucess) => {
         if (error) {
             throw error
             return
