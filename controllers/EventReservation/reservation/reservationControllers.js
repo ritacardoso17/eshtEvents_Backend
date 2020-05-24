@@ -52,8 +52,34 @@ function updateReservations(req, result) {
     })
 }
 
+function getReservations(req, result) {
+    let id = req.params.id
+
+    reservationFunctions.getReservations(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
+function getReservationsId(req, result) {
+    let id = req.params.id
+
+    reservationFunctions.getReservationsId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
 module.exports = { 
     addReservations: addReservations,
     removeReservations: removeReservations,
-    updateReservations: updateReservations
+    updateReservations: updateReservations,
+    getReservations: getReservations,
+    getReservationsId: getReservationsId
 }

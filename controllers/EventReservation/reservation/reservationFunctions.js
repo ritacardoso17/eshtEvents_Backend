@@ -36,8 +36,30 @@ function updateReservations(id, id_extra, n_people, date_required, id_uniform, i
     connection.end()
 }
 
+function getReservations(id, callback) {
+    connection.connect()
+    const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao, id_notificacao from reserva_evento"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+
+function getReservationsId(id, callback) {
+    connection.connect()
+    const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao, id_notificacao from reserva_evento WHERE id_reserva=?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+
 module.exports = {
     addReservations: addReservations,
     removeReservations: removeReservations,
-    updateReservations: updateReservations
+    updateReservations: updateReservations,
+    getReservations: getReservations,
+    getReservationsId: getReservationsId
 }

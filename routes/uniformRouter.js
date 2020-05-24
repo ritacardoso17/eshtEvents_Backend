@@ -5,5 +5,8 @@ const controller = require("../controllers/EventReservation/uniform/uniformContr
 router.post("/uniforms", controller.addUniform)
 router.delete("/uniforms/:id", controller.removeUniform)
 router.put("/uniforms/:id", controller.updateUniform)
+router.get("/uniforms", controller.getUniform)
+router.get("/uniforms/:id", controller.getUniformId)
+
 
 module.exports = router
