@@ -28,7 +28,7 @@ function updateRooms(req, result) {
     let id = req.params.id
     let description = req.body.description
 
-    roomsFunctions.updateRooms(id, description, (error, sucess) => {
+    roomsFunctions.updateRooms(description, id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -50,9 +50,22 @@ function getRooms(req, result) {
     })
 }
 
+function getRoomsId(req, result) {
+    let id = req.params.id
+
+    roomsFunctions.getRoomsId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
 module.exports = { 
     addRooms: addRooms,
     removeRooms: removeRooms,
-    updateRooms: updateRooms/* ,
-    getRooms: getRooms */
+    updateRooms: updateRooms,
+    getRooms: getRooms,
+    getRoomsId: getRoomsId
 }

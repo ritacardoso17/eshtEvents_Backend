@@ -41,17 +41,17 @@ function getComponents(id, name, callback) {
     const sql = "SELECT descritivo FROM componente"
     connection.query(sql, [id, name], function (error, results) {
         if (error) callback(error)
-        callback(null, { sucess: true, message: "Componente Buscado" })
+        callback(null, { sucess: true, message: results })
     })
     connection.end()
 }
 
-function getComponentsId(id, name, callback) {
+function getComponentsId(id, callback) {
     connection.connect()
     const sql = "SELECT descritivo FROM componente WHERE id_componente=?"
-    connection.query(sql, [id, name], function (error, results) {
+    connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
-        callback(null, { sucess: true, message: "Componente id Buscado" })
+        callback(null, { sucess: true, message: results })
     })
     connection.end()
 }

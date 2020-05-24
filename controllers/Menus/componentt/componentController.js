@@ -51,9 +51,8 @@ function getComponents(req, result) {
 
 function getComponentsId(req, result) {
     let id = req.params.id
-    let name = req.body.name
 
-    componentFunctions.getComponentsId(id, name, (error, sucess) => {
+    componentFunctions.getComponentsId(id, (error, sucess) => {
         if (error) {
             throw error
             return

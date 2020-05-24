@@ -17,7 +17,7 @@ function addRooms(description, callback) {
 function removeRooms(id, callback) {
     connection.connect()
 
-    const sql = "DELETE FROM tipo_espaco WHERE id_espaco = ?"
+    const sql = "DELETE FROM tipo_espaco WHERE id_espaco=?"
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Espaço Removido" })
@@ -28,7 +28,7 @@ function removeRooms(id, callback) {
 
 function updateRooms(id, description, callback) {
     connection.connect()
-    const sql = "UPDATE tipo_espaco SET descritivo=? WHERE id_espaco=? "
+    const sql = "UPDATE tipo_espaco SET descritivo=? WHERE id_espaco=?"
     connection.query(sql, [id, description], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Espaço Editado" })
@@ -36,20 +36,30 @@ function updateRooms(id, description, callback) {
     connection.end()
 }
 
-// FALTA GETS
-/* function getRooms(id, description, callback) {
+function getRooms(id, description, callback) {
     connection.connect()
-    const sql = "SELECT tipo_espaco SET descritivo=? WHERE id_espaco=? "
+    const sql = "SELECT descritivo FROM tipo_espaco"
     connection.query(sql, [id, description], function (error, results) {
         if (error) callback(error)
-        callback(null, { sucess: true, message: "Espaço Editado" })
+        callback(null, { sucess: true, message: results})
     })
     connection.end()
-} */
+}
+
+function getRoomsId(id, callback) {
+    connection.connect()
+    const sql = "SELECT descritivo FROM tipo_espaco WHERE id_espaco=?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results})
+    })
+    connection.end()
+}
 
 module.exports = { 
     addRooms: addRooms,
     removeRooms: removeRooms,
-    updateRooms: updateRooms/* ,
-    getRooms: getRooms */
+    updateRooms: updateRooms,
+    getRooms: getRooms,
+    getRoomsId: getRoomsId
 }
