@@ -27,23 +27,7 @@ function removeRents(req, result) {
     })
 }
 
-function updateRents(req, result) {
-    let id = req.params.id
-    let date_required = req.body.date_required
-    let duration = req.body.duration
-    let id_room = req.body.id_room
-
-    rentsFunctions.updateRents(id, date_required, duration, id_room, (error, sucess) => {
-        if (error) {
-            throw error
-            return
-        }
-        result.json(sucess)
-    })
-}
-
 module.exports = { 
     addRents: addRents,
     removeRents: removeRents,
-    updateRents: updateRents
 }
