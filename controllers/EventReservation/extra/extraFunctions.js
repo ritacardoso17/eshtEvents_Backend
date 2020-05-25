@@ -2,28 +2,31 @@ const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
-/* function getExtra(name, id, callback) {
+function getExtra(callback) {
     connection.connect()
-    const sql = "UPDATE extra SET descritivo=? WHERE id_extra=? "
-    connection.query(sql, [name, id], function (error, results) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: "Extra Editado" })
-    })
 
-    connection.end()
-}
-function getExtraId(callback) {
-    connection.connect()
     const sql = "SELECT descritivo FROM extra"
-    connection.query(sql, function (error, results) {
+    connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
     connection.end()
-} */
+
+}
+
+function getExtraId( id, callback){
+    connection.connect()
+
+    const sql = "SELECT id_extra, descritivo FROM extra WHERE id_extra=?"
+    connection.query(sql, [id], function(error, results){
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
 
 module.exports = {
-  /*   getExtra: getExtra,
-    getExtraId: getExtraId */
+  getExtra: getExtra,
+  getExtraId: getExtraId
 }
 

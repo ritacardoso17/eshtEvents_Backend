@@ -1,9 +1,19 @@
 const extraFunctions = require("./extraFunctions")
 
-/* function getExtra(req,result) {
-    let name = req.body.name
+function getExtra(req, result) {
+
+    extraFunctions.getExtra((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function getExtraId(req, result) {
     let id = req.params.id
-    extraFunctions.getExtra(name,id, (error, sucess) => {
+
+    extraFunctions.getExtraId(id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -12,19 +22,7 @@ const extraFunctions = require("./extraFunctions")
     })
 }
 
-function getExtraId(req,result) {
-    let name = req.body.name
-    let id = req.params.id
-    extraFunctions.getExtra(name,id, (error, sucess) => {
-        if (error) {
-            throw error
-            return
-        }
-        result.json(sucess)
-    })
-} */
-
 module.exports = { 
-    /* getExtra: getExtra, 
-    getExtraId:getExtraId */
+    getExtra: getExtra, 
+    getExtraId:getExtraId
 }
