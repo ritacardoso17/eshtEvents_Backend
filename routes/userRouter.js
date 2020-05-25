@@ -9,8 +9,8 @@ const verify = new controller.verifyLogin
 router.post("/users",saveImg.single('img'), controller.addUser)
 router.delete("/users/:id", middleware.verifyToken, controller.removeUser)
 router.put("/users/:id", middleware.verifyToken, saveImg.single('img'),controller.updateUser)
-router.get("/users", controller.getUser)
-router.get("/users/:id", controller.getUserID)
+router.get("/users",middleware.verifyToken, controller.getUser)
+router.get("/users/:id",middleware.verifyToken, controller.getUserID)
 router.post("/login",verify.login)
 router.post("/logout", middleware.verifyToken, controller.logout)
 module.exports = router
