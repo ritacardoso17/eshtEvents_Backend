@@ -23,9 +23,6 @@ function getUniformId(id, callback) {
 }
 
 module.exports = {
-    addUniform: addUniform,
-    removeUniform: removeUniform,
-    updateUniform: updateUniform,
     getUniform: getUniform,
     getUniformId: getUniformId
 }
