@@ -1,13 +1,13 @@
 const workshopFunctions = require("./workshopFunctions")
 
-function addWorkshops(req, result){
+function addWorkshops(req, result) {
     let description = req.body.description
     let n_vacancies = req.body.n_vacancies
     let date_hour = req.body.date_hour
     let price = req.body.price
     let id_local = req.body.id_local
-
-    workshopFunctions.addWorkshops(description, n_vacancies, date_hour, price, id_local, (error, sucess) => {
+    let img = req.file
+    workshopFunctions.addWorkshops(description, n_vacancies, date_hour, price, id_local, img.path, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -32,8 +32,8 @@ function updateWorkshops(req, result) {
     let date_hour = req.body.date_hour
     let price = req.body.price
     let id_local = req.body.id_local
-
-    workshopFunctions.updateWorkshops(description, n_vacancies, date_hour, price, id_local,id,  (error, sucess) => {
+    let img = req.file
+    workshopFunctions.updateWorkshops(description, n_vacancies, date_hour, price, id_local,img.path,  id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -62,4 +62,4 @@ function getWorkshopsId(req, result) {
         result.json(sucess)
     })
 }
-module.exports = { addWorkshops:addWorkshops, removeWorkshops:removeWorkshops, updateWorkshops:updateWorkshops, getWorkshops: getWorkshops, getWorkshopsId: getWorkshopsId }
+module.exports = { addWorkshops: addWorkshops, removeWorkshops: removeWorkshops, updateWorkshops: updateWorkshops, getWorkshops: getWorkshops, getWorkshopsId: getWorkshopsId }

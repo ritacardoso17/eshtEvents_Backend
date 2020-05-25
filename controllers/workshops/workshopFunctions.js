@@ -2,11 +2,11 @@ const dbConfig = require("../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
-function addWorkshops(description, n_vacancies, date_hour, price, id_local, callback) {
+function addWorkshops(description, n_vacancies, date_hour, price, id_local,img, callback) {
     connection.connect()
 
-    const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, preco, id_localizacao) VALUES (?,?,?,?,?)"
-    connection.query(sql, [description, n_vacancies, date_hour, price, id_local], function (error, results) {
+    const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, preco, id_localizacao,img) VALUES (?,?,?,?,?,?)"
+    connection.query(sql, [description, n_vacancies, date_hour, price, id_local,img], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Workshop Adicionado" })
     })
@@ -24,10 +24,10 @@ function removeWorkshops(id, callback) {
 
     connection.end()
 }
-function updateWorkshops(id, description, n_vacancies, date_hour, price, id_local, callback) {
+function updateWorkshops(id,description, n_vacancies, date_hour, price, id_local,img, callback) {
     connection.connect()
-    const sql = "UPDATE inscricao_workshop SET descritivo=?, nr_vagas=?, data_hora=?, preco=?, id_localizacao=? WHERE id_workshop=? "
-    connection.query(sql, [description, n_vacancies, date_hour, price, id_local,id], function (error, results) {
+    const sql = "UPDATE inscricao_workshop SET descritivo=?, nr_vagas=?, data_hora=?, preco=?, id_localizacao=?,img=? WHERE id_workshop=? "
+    connection.query(sql, [description, n_vacancies, date_hour, price, id_local,img,id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Workshop Editado" })
     })
