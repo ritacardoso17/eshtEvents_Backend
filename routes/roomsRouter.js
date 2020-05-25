@@ -4,7 +4,7 @@ var router = Router()
  
 const controller = require("../controllers/Rooms/roomsControllers")
 
-router.get("/rooms", controller.getRooms)
-router.get("/rooms/:id", controller.getRoomsId)
+router.get("/rooms", middleware.verifyToken, controller.getRooms)
+router.get("/rooms/:id", middleware.verifyToken, controller.getRoomsId)
 
 module.exports = router

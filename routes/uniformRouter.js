@@ -4,8 +4,8 @@ var router = Router()
  
 const controller = require("../controllers/EventReservation/uniform/uniformController")
 
-router.get("/uniforms", controller.getUniform)
-router.get("/uniforms/:id", controller.getUniformId)
+router.get("/uniforms", middleware.verifyToken, controller.getUniform)
+router.get("/uniforms/:id", middleware.verifyToken, controller.getUniformId)
 
 
 module.exports = router

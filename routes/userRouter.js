@@ -7,11 +7,11 @@ var router = Router()
 const controller = require("../controllers/Users/userController")
 const verify = new controller.verifyLogin
 router.post("/users",saveImg.single('img'), controller.addUser)
-router.delete("/users/:id",controller.removeUser)
-router.put("/users/:id",saveImg.single('img'),controller.updateUser)
+router.delete("/users/:id", middleware.verifyToken, controller.removeUser)
+router.put("/users/:id", middleware.verifyToken, saveImg.single('img'),controller.updateUser)
 router.get("/users", controller.getUser)
 router.get("/users/:id", controller.getUserID)
 router.post("/login",verify.login)
-router.post("/logout",controller.logout)
+router.post("/logout", middleware.verifyToken, controller.logout)
 module.exports = router
 
