@@ -2,6 +2,7 @@ const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
+//Add Decoraçao 
 function addDecoration  (description, img, callback) {
     connection.connect()
 
@@ -13,6 +14,7 @@ function addDecoration  (description, img, callback) {
 
     connection.end()
 }
+//Remove Decoraçao
 function removeDecoration (id, callback)  {
     connection.connect()
 
@@ -24,15 +26,17 @@ function removeDecoration (id, callback)  {
 
     connection.end()
 }
-function updateDecoration(description, id, callback) {
+//Editar Decoração 
+function updateDecoration(description,img, id, callback) {
     connection.connect()
-    const sql = "UPDATE decoracao SET descritivo=? WHERE id_decoracao=? "
-    connection.query(sql, [description, id], function (error, results) {
+    const sql = "UPDATE decoracao SET descritivo=?,img=? WHERE id_decoracao=? "
+    connection.query(sql, [description,img, id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Decoração Editada" })
     })
     connection.end()
 }
+
 function getDecoration(description, id, callback) {
     connection.connect()
     const sql = "SELECT descritivo FROM decoracao"

@@ -1,6 +1,51 @@
 const userFunctions = require("./userFunctions")
 const bcrypt = require("bcrypt")
 
+
+function addUser(req, result) {
+    let name = req.body.name
+    let img = req.file
+    let pass = req.body.pass
+    let data = req.body.data
+    let telemovel = req.body.telemovel
+    let idE = req.body.idE
+    let email = req.body.email
+    bcrypt.hash(pass, 10, function (error, hash) {
+        userFunctions.addUser(name, hash, img.path, data, telemovel, idE, email, (error, sucess) => {
+            if (error) {
+                throw error
+                return
+            }
+            result.json(sucess)
+        })
+    })
+}
+function removeUser(req, result) {
+    let id = req.params.id
+    userFunctions.removeUser(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function updateUser(req, result) {
+    let img = req.file
+    let pass = req.body.pass
+    let id = req.params.id
+    bcrypt.hash(pass, 10, function (error, hash){
+        userFunctions.updateUser( hash, img.path, id, (error, sucess) => {
+            if (error) {
+                throw error
+                return
+            }
+            result.json(sucess)
+        })
+    })
+
+}
+//CLASS PARA LOGIN
 class verifyLogin {
     login(req, result) {
         let pass = req.body.pass
@@ -31,26 +76,6 @@ function logout(req, result) {
         result.json(sucess)
     })
 }
-function addUser(req, result) {
-
-    let name = req.body.name
-    let img = ""
-    let pass = req.body.pass
-    let data = req.body.data
-    let telemovel = req.body.telemovel
-    let idE = req.body.idE
-    let email = req.body.email
-
-    bcrypt.hash(pass, 10, function (err, hash) {
-        userFunctions.addUser(name, hash, img, data, telemovel, idE, email, (error, sucess) => {
-            if (error) {
-                throw error
-                return
-            }
-            result.json(sucess)
-        })
-    })
 
 
-}
-module.exports = { addUser: addUser, verifyLogin: verifyLogin,logout:logout }
+module.exports = { addUser: addUser, removeUser: removeUser,updateUser:updateUser, verifyLogin: verifyLogin, logout: logout }

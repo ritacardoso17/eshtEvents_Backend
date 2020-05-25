@@ -1,9 +1,10 @@
 const decorationFunctions = require("./decorationFunctions")
 
+//Adicionar Decoraçao: descritivo e img
 function addDecoration(req, result) {
     let description = req.body.description
-    let img = ""
-    decorationFunctions.addDecoration(description, img, (error, sucess) => {
+    let img = req.file
+    decorationFunctions.addDecoration(description, img.path, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -12,6 +13,7 @@ function addDecoration(req, result) {
     })
 
 }
+//Remover Decoração pelo ID
 function removeDecoration(req, result) {
     let id = req.params.id
     decorationFunctions.removeDecoration(id, (error, sucess) => {
@@ -23,10 +25,12 @@ function removeDecoration(req, result) {
     })
 
 }
+//Editar Decoração: descritivo e img
 function updateDecoration(req, result) {
     let description = req.body.description
+    let img = req.file
     let id = req.params.id
-    decorationFunctions.updateDecoration(description,id, (error, sucess) => {
+    decorationFunctions.updateDecoration(description, img.path,id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -34,6 +38,7 @@ function updateDecoration(req, result) {
         result.json(sucess)
     })
 }
+//Retornar todos os dados da tabela
 function getDecoration(req, result) {
     let description = req.body.description
     let id = req.params.id
@@ -45,6 +50,7 @@ function getDecoration(req, result) {
         result.json(sucess)
     })
 }
+//Retornar uma só Decoração pelo ID
 function getDecorationID(req, result) {
      let id = req.params.id
     decorationFunctions.getDecorationID(id, (error, sucess) => {

@@ -27,4 +27,4 @@ function verifyToken(req, res, next) {
     connection.end()
 }
 
-module.exports = { verifyToken: verifyToken }
+module.exports = { verifyToken: verifyToken } 
