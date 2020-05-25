@@ -12,5 +12,32 @@ function addMenu(req, result) {
     })
 
 }
+function removeMenu(req, result) {
+    let id = req.params.id
+    menuFunctions.removeMenu(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function updateMenu(req, result) {
+    let id = req.params.id
+    let id_tipo_reserva = req.body.id_tipo_reserva
+    let description = req.body.description
+    
+    menuFunctions.updateMenu(id, id_tipo_reserva, description, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 
-module.exports = { addMenu: addMenu }
+module.exports = { 
+    addMenu: addMenu,
+    removeMenu: removeMenu,
+    updateMenu: updateMenu
+}
