@@ -3,7 +3,8 @@ const menuFunctions = require("./menuFunction")
 function addMenu(req, result) {
     let description = req.body.description
     let id_tipo_reserva = req.body.id_tipo_reserva
-    menuFunctions.addMenu(description, id_tipo_reserva, (error, sucess) => {
+    let img = req.file
+    menuFunctions.addMenu(description, id_tipo_reserva, img.path, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -26,8 +27,9 @@ function updateMenu(req, result) {
     let id = req.params.id
     let id_tipo_reserva = req.body.id_tipo_reserva
     let description = req.body.description
-    
-    menuFunctions.updateMenu(id, id_tipo_reserva, description, (error, sucess) => {
+    let img = req.file
+
+    menuFunctions.updateMenu(id, id_tipo_reserva, description, img.path, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -57,7 +59,7 @@ function getMenuId(req, result) {
     })
 }
 
-module.exports = { 
+module.exports = {
     addMenu: addMenu,
     removeMenu: removeMenu,
     updateMenu: updateMenu,
