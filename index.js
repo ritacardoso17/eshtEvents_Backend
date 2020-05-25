@@ -12,7 +12,6 @@ const menuRouter = require("./routes/menuRouter")
 const decorationRouter = require("./routes/decorationRouter")
 const reservationRouter = require("./routes/reservationRouter")
 const roomsRouter = require("./routes/roomsRouter")
-const userTypeRouter = require("./routes/userTypeRouter")
 const workshopRouter = require("./routes/workshopRouter")
 const app = express();
 
@@ -30,7 +29,6 @@ app.use(menuRouter)
 app.use(decorationRouter)
 app.use(reservationRouter)
 app.use(roomsRouter)
-app.use(userTypeRouter)
 app.use(workshopRouter)
 
 app.listen(config.port, () => {
