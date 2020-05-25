@@ -27,7 +27,32 @@ function removeRents(req, result) {
     })
 }
 
+function getRents(req, result) {
+
+    rentsFunctions.getRents((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
+function getRentsId(req, result) {
+    let id = req.params.id
+
+    rentsFunctions.getRentsId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
 module.exports = { 
     addRents: addRents,
     removeRents: removeRents,
+    getRents: getRents,
+    getRentsId: getRentsId
 }

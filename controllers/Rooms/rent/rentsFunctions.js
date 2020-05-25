@@ -26,7 +26,32 @@ function removeRents(id, callback) {
     connection.end()
 }
 
+function getRents(callback) {
+    connection.connect()
+
+    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco FROM aluguer_espaco"
+    connection.query(sql, function(error, results){
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+
+}
+
+function getRentsId( id, callback){
+    connection.connect()
+
+    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco FROM aluguer_espaco WHERE id_aluguer=?"
+    connection.query(sql, [id], function(error, results){
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+
 module.exports = { 
     addRents: addRents,
     removeRents: removeRents,
+    getRents: getRents,
+    getRentsId: getRentsId
 }

@@ -33,4 +33,26 @@ function updateWorkshops(id, description, n_vacancies, date_hour, price, id_loca
     })
     connection.end()
 }
-module.exports = { addWorkshops:addWorkshops, removeWorkshops:removeWorkshops, updateWorkshops:updateWorkshops }
+function getWorkshops(callback) {
+    connection.connect()
+
+    const sql = "SELECT descritivo, nr_vagas, data_hora, preco, id_localizacao FROM inscricao_workshop"
+    connection.query(sql, function(error, results){
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+
+}
+function getWorkshopsId( id, callback){
+    connection.connect()
+
+    const sql = "SELECT id_workshop, descritivo, nr_vagas, data_hora, preco, id_localizacao FROM inscricao_workshop WHERE id_workshop=?"
+    connection.query(sql, [id], function(error, results){
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+
+module.exports = { addWorkshops:addWorkshops, removeWorkshops:removeWorkshops, updateWorkshops:updateWorkshops, getWorkshops: getWorkshops, getWorkshopsId: getWorkshopsId }

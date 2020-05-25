@@ -12,5 +12,55 @@ function addMenu(req, result) {
     })
 
 }
+function removeMenu(req, result) {
+    let id = req.params.id
+    menuFunctions.removeMenu(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function updateMenu(req, result) {
+    let id = req.params.id
+    let id_tipo_reserva = req.body.id_tipo_reserva
+    let description = req.body.description
+    
+    menuFunctions.updateMenu(id, id_tipo_reserva, description, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function getMenu(req, result) {
 
-module.exports = { addMenu: addMenu }
+    menuFunctions.getMenu((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function getMenuId(req, result) {
+    let id = req.params.id
+
+    menuFunctions.getMenuId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
+module.exports = { 
+    addMenu: addMenu,
+    removeMenu: removeMenu,
+    updateMenu: updateMenu,
+    getMenu: getMenu,
+    getMenuId: getMenuId
+}

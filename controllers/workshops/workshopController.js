@@ -41,5 +41,25 @@ function updateWorkshops(req, result) {
         result.json(sucess)
     })
 }
+function getWorkshops(req, result) {
 
-module.exports = { addWorkshops:addWorkshops, removeWorkshops:removeWorkshops, updateWorkshops:updateWorkshops  }
+    workshopFunctions.getWorkshops((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function getWorkshopsId(req, result) {
+    let id = req.params.id
+
+    workshopFunctions.getWorkshopsId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+module.exports = { addWorkshops:addWorkshops, removeWorkshops:removeWorkshops, updateWorkshops:updateWorkshops, getWorkshops: getWorkshops, getWorkshopsId: getWorkshopsId }
