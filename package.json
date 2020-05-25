@@ -13,6 +13,10 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+<<<<<<< HEAD
+=======
+    "jsonwebtoken": "^8.5.1",
+>>>>>>> 3a6e0bd3d02b58073ec01cb781c2efb2d0739ed9
     "multer": "^1.4.2",
     "mysql": "^2.18.1"
   },
