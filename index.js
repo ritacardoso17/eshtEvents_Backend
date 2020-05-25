@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const config = require("./config.json")
 const userRouter = require("./routes/userRouter")
 const extraRouter = require("./routes/extraRouter")
 const uniformRouter = require("./routes/uniformRouter")
@@ -32,6 +33,6 @@ app.use(roomsRouter)
 app.use(userTypeRouter)
 app.use(workshopRouter)
 
-app.listen(3000, function () {
-    console.log('Server running at http://localhost:3000/%27');
+app.listen(config.port, () => {
+    console.log(config.message);
 });
