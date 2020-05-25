@@ -26,18 +26,7 @@ function removeRents(id, callback) {
     connection.end()
 }
 
-function updateRents(id, date_required, duration, id_room, callback) {
-    connection.connect()
-    const sql = "UPDATE aluguer_espaco SET data_hora_requirida=?, duracao=?, id_espaco=? WHERE id_aluguer=? "
-    connection.query(sql, [id, date_required, duration, id_room], function (error, results) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: "Aluguer Editado" })
-    })
-    connection.end()
-}
-
 module.exports = { 
     addRents: addRents,
     removeRents: removeRents,
-    updateRents: updateRents
 }

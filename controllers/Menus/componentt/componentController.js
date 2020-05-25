@@ -23,19 +23,6 @@ function removeComponents(req, result) {
     })
 }
 
-function updateComponents(req, result) {
-    let id = req.params.id
-    let name = req.body.name
-
-    componentFunctions.updateComponents(id, name, (error, sucess) => {
-        if (error) {
-            throw error
-            return
-        }
-        result.json(sucess)
-    })
-}
-
 function getComponents(req, result) {
     let id = req.params.id
     let name = req.body.name
@@ -64,7 +51,6 @@ function getComponentsId(req, result) {
 module.exports = { 
     addComponents: addComponents,
     removeComponents: removeComponents,
-    updateComponents: updateComponents,
     getComponents: getComponents,
     getComponentsId: getComponentsId
  }
