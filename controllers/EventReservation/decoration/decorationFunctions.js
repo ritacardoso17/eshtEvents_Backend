@@ -37,10 +37,10 @@ function updateDecoration(description,img, id, callback) {
     connection.end()
 }
 
-function getDecoration(description, id, callback) {
+function getDecoration(callback) {
     connection.connect()
     const sql = "SELECT descritivo FROM decoracao"
-    connection.query(sql, [description, id], function (error, results) {
+    connection.query(sql, function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })

@@ -45,6 +45,26 @@ function updateUser(req, result) {
     })
 
 }
+//Retornar todos os dados da tabela
+function getUser(req, result) {
+    userFunctions.getUser((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function getUserID(req, result) {
+    let id = req.params.id
+    userFunctions.getUserID(id,(error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 //CLASS PARA LOGIN
 class verifyLogin {
     login(req, result) {
@@ -78,4 +98,4 @@ function logout(req, result) {
 }
 
 
-module.exports = { addUser: addUser, removeUser: removeUser,updateUser:updateUser, verifyLogin: verifyLogin, logout: logout }
+module.exports = { addUser: addUser, removeUser: removeUser,updateUser:updateUser, getUser:getUser,getUserID:getUserID,verifyLogin: verifyLogin, logout: logout }

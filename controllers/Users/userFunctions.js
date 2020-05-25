@@ -44,7 +44,7 @@ function logout(token, callback) {
     connection.end()
 }
 
-//Funcao de Criar Conta-- por default o tipo de utilizador é sempre Cliente
+//funcao de Criar Conta-- por default o tipo de utilizador é sempre Cliente
 function addUser(name, pass, img, data, telemovel, idE, email, callback) {
     connection.connect()
 
@@ -80,5 +80,23 @@ function updateUser(pass, img, id, callback) {
     })
     connection.end()
 }
-
-module.exports = { addUser: addUser, removeUser: removeUser, updateUser: updateUser, login: login, logout: logout }
+//Getssss
+function getUser(callback) {
+    connection.connect()
+    const sql = "SELECT id_tipoUser,nome,password,foto_perfil,data_nascimento,telemovel,email_ipp FROM utilizador"
+    connection.query(sql, function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+function getUserID(id, callback) {
+    connection.connect()
+    const sql = "SELECT id_tipoUser,nome,password,foto_perfil,data_nascimento,telemovel,email_ipp FROM utilizador WHERE id_utilizador = ?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+module.exports = { addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getUserID: getUserID, login: login, logout: logout }
