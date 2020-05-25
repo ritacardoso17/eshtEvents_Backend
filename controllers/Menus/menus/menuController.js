@@ -35,9 +35,32 @@ function updateMenu(req, result) {
         result.json(sucess)
     })
 }
+function getMenu(req, result) {
+
+    menuFunctions.getMenu((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function getMenuId(req, result) {
+    let id = req.params.id
+
+    menuFunctions.getMenuId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 
 module.exports = { 
     addMenu: addMenu,
     removeMenu: removeMenu,
-    updateMenu: updateMenu
+    updateMenu: updateMenu,
+    getMenu: getMenu,
+    getMenuId: getMenuId
 }
