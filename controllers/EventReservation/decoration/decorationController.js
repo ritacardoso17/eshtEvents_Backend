@@ -40,8 +40,6 @@ function updateDecoration(req, result) {
 }
 //Retornar todos os dados da tabela
 function getDecoration(req, result) {
-    let description = req.body.description
-    let id = req.params.id
     decorationFunctions.getDecoration(description,id, (error, sucess) => {
         if (error) {
             throw error
