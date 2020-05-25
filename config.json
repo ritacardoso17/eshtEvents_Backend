@@ -1,6 +1,6 @@
 {
     "host":"localhost",
     "port":"3000",
-    "message":"App runing ",
+    "message":"App Running ",
     "secret":"ok"
 }
