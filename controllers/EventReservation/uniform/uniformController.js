@@ -1,3 +1,5 @@
+//Utilizar function criada para tratar os possiveis erros
+
 const uniformFunctions = require("./uniformFunction")
 
 function getUniform(req, result) {

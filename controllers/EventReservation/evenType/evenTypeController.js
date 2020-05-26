@@ -1,3 +1,4 @@
+//Utilizar function criada para tratar os possiveis erros
 const evenTypeFunctions = require("./evenTypeFunctions")
 
 function getEvenType(req, result) {

@@ -1,7 +1,7 @@
 const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
-
+//retorna dados da tabela farda na tabela base de dados
 function getUniform(name, img, id, callback) {
     connection.connect()
     const sql = "SELECT descritivo, img FROM farda"
@@ -11,7 +11,7 @@ function getUniform(name, img, id, callback) {
     })
     connection.end()
 }
-
+//retorna dados sobre uma farda selecionada por id
 function getUniformId(id, callback) {
     connection.connect()
     const sql = "SELECT descritivo, img FROM farda WHERE id_farda=?"

@@ -44,7 +44,7 @@ function logout(token, callback) {
     connection.end()
 }
 
-//funcao de Criar Conta-- por default o tipo de utilizador é sempre Cliente
+//Funcao de Criar Conta-- por default o tipo de utilizador é sempre Cliente
 function addUser(name, pass, img, data, telemovel, idE, email, callback) {
     connection.connect()
 

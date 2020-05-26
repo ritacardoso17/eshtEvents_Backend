@@ -2,6 +2,7 @@ const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
+//funcao criada para adicionar uma reserva a base de dados
 function addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, callback) {
     connection.connect()
 
@@ -13,7 +14,7 @@ function addReservations(id_extra, id_user, n_people, date_reserv, date_required
 
     connection.end()
 }
-
+//funcao criada para remover uma reserva selecionada por id
 function removeReservations(id, callback) {
     connection.connect()
 
@@ -25,7 +26,7 @@ function removeReservations(id, callback) {
 
     connection.end()
 }
-
+//retorna todos os dados da tabela reerva_evento
 function getReservations(id, callback) {
     connection.connect()
     const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao, id_notificacao from reserva_evento"
@@ -35,7 +36,7 @@ function getReservations(id, callback) {
     })
     connection.end()
 }
-
+//retorna os dados de uma so reserva selecionada por id
 function getReservationsId(id, callback) {
     connection.connect()
     const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao, id_notificacao from reserva_evento WHERE id_reserva=?"

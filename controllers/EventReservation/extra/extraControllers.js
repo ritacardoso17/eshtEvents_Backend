@@ -1,3 +1,5 @@
+//Utilizar function criada para tratar os possiveis erros
+
 const extraFunctions = require("./extraFunctions")
 
 function getExtra(req, result) {
@@ -10,6 +12,7 @@ function getExtra(req, result) {
         result.json(sucess)
     })
 }
+
 function getExtraId(req, result) {
     let id = req.params.id
 

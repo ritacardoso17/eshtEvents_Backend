@@ -1,3 +1,5 @@
+//Utilizar function criada para tratar os possiveis erros
+
 const componentFunctions = require("./componentFunction")
 
 function addComponents(req, result) {

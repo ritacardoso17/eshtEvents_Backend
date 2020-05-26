@@ -2,6 +2,7 @@ const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
+//retorna todos os dados da tabela extra
 function getExtra(callback) {
     connection.connect()
 
@@ -13,7 +14,7 @@ function getExtra(callback) {
     connection.end()
 
 }
-
+//retorna a informaçao de um extra selecionada apartir do id
 function getExtraId( id, callback){
     connection.connect()
 

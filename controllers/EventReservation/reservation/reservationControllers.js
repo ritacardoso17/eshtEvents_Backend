@@ -1,3 +1,5 @@
+//Utilizar function criada para tratar os possiveis erros
+
 const reservationFunctions = require("./reservationFunctions")
 
 function addReservations(req, result){
