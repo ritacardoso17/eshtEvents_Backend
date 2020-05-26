@@ -1,5 +1,6 @@
 const workshopFunctions = require("./workshopFunctions")
 
+// Utiliza as funções de workshops criadas e trata dos seus erros
 function addWorkshops(req, result) {
     let description = req.body.description
     let n_vacancies = req.body.n_vacancies
@@ -15,6 +16,7 @@ function addWorkshops(req, result) {
         result.json(sucess)
     })
 }
+
 function removeWorkshops(req, result) {
     let id = req.params.id
     workshopFunctions.removeWorkshops(id, (error, sucess) => {
@@ -25,6 +27,7 @@ function removeWorkshops(req, result) {
         result.json(sucess)
     })
 }
+
 function updateWorkshops(req, result) {
     let id = req.params.id
     let description = req.body.description
@@ -41,6 +44,7 @@ function updateWorkshops(req, result) {
         result.json(sucess)
     })
 }
+
 function getWorkshops(req, result) {
 
     workshopFunctions.getWorkshops((error, sucess) => {

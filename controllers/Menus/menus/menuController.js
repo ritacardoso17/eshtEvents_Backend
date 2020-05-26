@@ -1,5 +1,6 @@
 const menuFunctions = require("./menuFunction")
 
+// Utiliza as funções dos menus criadas e trata dos seus erros
 function addMenu(req, result) {
     let description = req.body.description
     let id_tipo_reserva = req.body.id_tipo_reserva
@@ -13,6 +14,7 @@ function addMenu(req, result) {
     })
 
 }
+
 function removeMenu(req, result) {
     let id = req.params.id
     menuFunctions.removeMenu(id, (error, sucess) => {
@@ -23,6 +25,7 @@ function removeMenu(req, result) {
         result.json(sucess)
     })
 }
+
 function updateMenu(req, result) {
     let id = req.params.id
     let id_tipo_reserva = req.body.id_tipo_reserva
@@ -37,6 +40,7 @@ function updateMenu(req, result) {
         result.json(sucess)
     })
 }
+
 function getMenu(req, result) {
 
     menuFunctions.getMenu((error, sucess) => {
@@ -47,6 +51,7 @@ function getMenu(req, result) {
         result.json(sucess)
     })
 }
+
 function getMenuId(req, result) {
     let id = req.params.id
 

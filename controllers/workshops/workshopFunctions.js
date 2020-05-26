@@ -2,7 +2,8 @@ const dbConfig = require("../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
-function addWorkshops(description, n_vacancies, date_hour, price, id_local,img, callback) {
+// Adiciona os workshops
+function addWorkshops(description, n_vacancies, date_hour, price, id_local, img, callback) {
     connection.connect()
 
     const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, preco, id_localizacao,img) VALUES (?,?,?,?,?,?)"
@@ -13,6 +14,8 @@ function addWorkshops(description, n_vacancies, date_hour, price, id_local,img, 
 
     connection.end()
 }
+
+// Remove os workshops selecionados
 function removeWorkshops(id, callback) {
     connection.connect()
 
@@ -24,6 +27,8 @@ function removeWorkshops(id, callback) {
 
     connection.end()
 }
+
+// Altera certos elementos dos workshops
 function updateWorkshops(id,description, n_vacancies, date_hour, price, id_local,img, callback) {
     connection.connect()
     const sql = "UPDATE inscricao_workshop SET descritivo=?, nr_vagas=?, data_hora=?, preco=?, id_localizacao=?,img=? WHERE id_workshop=? "
@@ -33,6 +38,8 @@ function updateWorkshops(id,description, n_vacancies, date_hour, price, id_local
     })
     connection.end()
 }
+
+// Retorna todos os workshops
 function getWorkshops(callback) {
     connection.connect()
 
@@ -44,6 +51,8 @@ function getWorkshops(callback) {
     connection.end()
 
 }
+
+// Retorna os workshops escolhidos através do seu id
 function getWorkshopsId( id, callback){
     connection.connect()
 

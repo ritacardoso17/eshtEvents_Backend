@@ -2,6 +2,7 @@ const dbConfig = require("../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
+// Retorna todos os dados dos espaços
 function getRooms(id, description, callback) {
     connection.connect()
     const sql = "SELECT descritivo FROM tipo_espaco"
@@ -12,6 +13,7 @@ function getRooms(id, description, callback) {
     connection.end()
 }
 
+// Retorna os dados dos espaços consoante o id escolhido
 function getRoomsId(id, callback) {
     connection.connect()
     const sql = "SELECT descritivo FROM tipo_espaco WHERE id_espaco=?"
