@@ -1,5 +1,6 @@
 const roomsFunctions = require("./roomsFunctions")
 
+// Utiliza as funções dos espaços criadas e trata dos seus erros
 function getRooms(req, result) {
     let id = req.params.id
     let description = req.body.description

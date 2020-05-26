@@ -2,6 +2,7 @@ const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
+// Adiciona aluguer de espaços
 function addRents(id_user, date_reserv, date_required, duration, id_room, callback) {
     connection.connect()
 
@@ -14,6 +15,7 @@ function addRents(id_user, date_reserv, date_required, duration, id_room, callba
     connection.end()
 }
 
+// Remove os dados dos alugueres consoante o id escolhido
 function removeRents(id, callback) {
     connection.connect()
 
@@ -26,6 +28,7 @@ function removeRents(id, callback) {
     connection.end()
 }
 
+// Retorna todos os dados dos alugueres
 function getRents(callback) {
     connection.connect()
 
@@ -38,6 +41,7 @@ function getRents(callback) {
 
 }
 
+// Retorna os dados dos espaços escolhidos consoante o id
 function getRentsId( id, callback){
     connection.connect()
 

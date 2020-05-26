@@ -2,6 +2,7 @@ const dbConfig = require("../../../database/dbConfig.json")
 const mySql = require("mysql")
 var connection = mySql.createConnection(dbConfig)
 
+// Adiciona menus
 function addMenu(description, id_tipo_reserva, img, callback) {
     connection.connect()
 
@@ -13,6 +14,8 @@ function addMenu(description, id_tipo_reserva, img, callback) {
 
     connection.end()
 }
+
+// Remove os dados dos menus consoante o id escolhido
 function removeMenu(id, callback) {
     connection.connect()
 
@@ -24,6 +27,8 @@ function removeMenu(id, callback) {
 
     connection.end()
 }
+
+// Altera os dados dos menus consoante o id escolhido
 function updateMenu(id, id_tipo_reserva, description,img, callback) {
     connection.connect()
     const sql = "UPDATE menu SET id_tipo_reserva=?, descritivo=?,img=? WHERE id_menu=? "
@@ -34,6 +39,7 @@ function updateMenu(id, id_tipo_reserva, description,img, callback) {
     connection.end()
 }
 
+// Retorna os dados de todos os menus
 function getMenu(callback) {
     connection.connect()
 
@@ -46,6 +52,7 @@ function getMenu(callback) {
 
 }
 
+// Retorna os dados dos menus consoante o id escolhido
 function getMenuId(id, callback) {
     connection.connect()
 

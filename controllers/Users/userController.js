@@ -1,7 +1,7 @@
 const userFunctions = require("./userFunctions")
 const bcrypt = require("bcrypt")
 
-
+// Utiliza as funções dos users criadas e trata dos seus erros
 function addUser(req, result) {
     let name = req.body.name
     let img = req.file
@@ -20,6 +20,7 @@ function addUser(req, result) {
         })
     })
 }
+
 function removeUser(req, result) {
     let id = req.params.id
     userFunctions.removeUser(id, (error, sucess) => {
@@ -30,6 +31,7 @@ function removeUser(req, result) {
         result.json(sucess)
     })
 }
+
 function updateUser(req, result) {
     let img = req.file
     let pass = req.body.pass
@@ -45,6 +47,7 @@ function updateUser(req, result) {
     })
 
 }
+
 //Retornar todos os dados da tabela
 function getUser(req, result) {
     userFunctions.getUser((error, sucess) => {
@@ -54,7 +57,8 @@ function getUser(req, result) {
         }
         result.json(sucess)
     })
-}
+}~
+
 function getUserID(req, result) {
     let id = req.params.id
     userFunctions.getUserID(id,(error, sucess) => {
@@ -65,7 +69,8 @@ function getUserID(req, result) {
         result.json(sucess)
     })
 }
-//CLASS PARA LOGIN
+
+// Class para Login
 class verifyLogin {
     login(req, result) {
         let pass = req.body.pass
@@ -83,6 +88,7 @@ class verifyLogin {
         result.json({ success: true, message: "eshtEvents" })
     }
 }
+
 function logout(req, result) {
     let token = req.headers['x-access-token'] || req.headers['authorization']
     if (token.startsWith('Bearer ')) {
@@ -96,6 +102,5 @@ function logout(req, result) {
         result.json(sucess)
     })
 }
-
 
 module.exports = { addUser: addUser, removeUser: removeUser,updateUser:updateUser, getUser:getUser,getUserID:getUserID,verifyLogin: verifyLogin, logout: logout }
