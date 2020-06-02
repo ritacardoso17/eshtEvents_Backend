@@ -10,7 +10,7 @@ function verifyToken(req, res, next) {
         token = token.slice(7, token.length)
     }
     const sql = "SELECT token FROM token_bloqueado WHERE token=?"
-    connection.connect()
+    connection 
     connection.query(sql, [token], function (error, rows, fields) {
         if (rows.length != 0) { return res.json({ success: false, message: "Token Bloqueado" }) }
         else if (rows.length == 0) {
@@ -24,7 +24,7 @@ function verifyToken(req, res, next) {
             })
         }
     })
-    connection.end()
+    connection 
 }
 
 module.exports = { verifyToken: verifyToken } 
