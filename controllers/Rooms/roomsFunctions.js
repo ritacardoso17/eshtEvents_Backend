@@ -5,24 +5,26 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 
 // Retorna todos os dados dos espaços
 function getRooms(id, description, callback) {
-    connection.connect()
+    connect()
+
     const sql = "SELECT descritivo FROM tipo_espaco"
     connection.query(sql, [id, description], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results})
     })
-    connection.end()
+    end()
 }
 
 // Retorna os dados dos espaços consoante o id escolhido
 function getRoomsId(id, callback) {
-    connection.connect()
+    connect()
+    
     const sql = "SELECT descritivo FROM tipo_espaco WHERE id_espaco=?"
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results})
     })
-    connection.end()
+    end()
 }
 
 module.exports = { 
