@@ -1,9 +1,9 @@
 const jsonwebtoken = require('jsonwebtoken')
-const dbConfig = require('./database/dbConfig.json')
+// const dbConfig = require('./database/dbConfig.json')
 const config = require("./config.json")
 const mysql = require("mysql")
-var connection = mysql.createConnection(dbConfig)
-
+var connection = mySql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
+// var connection = mySql.createConnection(dbConfig)
 function verifyToken(req, res, next) {
     let token = req.headers['x-access-token'] || req.headers['authorization']
     if (token.startsWith('Bearer ')) {
