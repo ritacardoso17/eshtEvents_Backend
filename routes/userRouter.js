@@ -11,6 +11,7 @@ router.delete("/users/:id", middleware.verifyToken, controller.removeUser)
 router.put("/users/:id", middleware.verifyToken, saveImg.single('img'),controller.updateUser)
 router.get("/users",middleware.verifyToken, controller.getUser)
 router.get("/users/:id",middleware.verifyToken, controller.getUserID)
+router.get("/",verify.landingPage)
 router.post("/login",verify.login)
 router.post("/logout", middleware.verifyToken, controller.logout)
 module.exports = router
