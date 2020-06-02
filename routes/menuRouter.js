@@ -11,6 +11,6 @@ router.delete("/menus/:id", middleware.verifyToken, controller.removeMenu)
 router.put("/menus/:id", middleware.verifyToken, saveImg.single('img'), controller.updateMenu)
 router.get("/menus", controller.getMenu)
 router.get("/menus/:id", controller.getMenuId)
-
+router.get("/menuTypes/:id", controller.getMenuType)
 
 module.exports = router

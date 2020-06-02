@@ -64,4 +64,23 @@ function getMenuId(id, callback) {
     connection.end()
 }
 
-module.exports = { addMenu: addMenu, removeMenu: removeMenu, updateMenu: updateMenu, getMenu: getMenu, getMenuId: getMenuId }
+// Retorna os dados dos menus consoante o id do tipo de menu escolhido
+function getMenuType(id_menu_type, callback) {
+    connection.connect()
+
+    const sql = "SELECT id_menu, id_tipo_reserva, descritivo FROM menu WHERE id_tipo_reserva=?"
+    connection.query(sql, [id_menu_type], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection.end()
+}
+
+module.exports = { 
+    addMenu: addMenu, 
+    removeMenu: removeMenu, 
+    updateMenu: updateMenu, 
+    getMenu: getMenu, 
+    getMenuId: getMenuId,
+    getMenuType: getMenuType 
+}

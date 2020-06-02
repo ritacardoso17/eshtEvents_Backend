@@ -57,7 +57,7 @@ function getUser(req, result) {
         }
         result.json(sucess)
     })
-}~
+}
 
 function getUserID(req, result) {
     let id = req.params.id

@@ -64,10 +64,23 @@ function getMenuId(req, result) {
     })
 }
 
+function getMenuType(req, result) {
+    let id_menu_type = req.params.id_menu_type
+
+    menuFunctions.getMenuType(id_menu_type, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
 module.exports = {
     addMenu: addMenu,
     removeMenu: removeMenu,
     updateMenu: updateMenu,
     getMenu: getMenu,
-    getMenuId: getMenuId
+    getMenuId: getMenuId,
+    getMenuType: getMenuType
 }
