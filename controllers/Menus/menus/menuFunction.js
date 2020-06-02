@@ -45,9 +45,9 @@ function getMenu(callback) {
     connection.connect()
 
     const sql = "SELECT id_tipo_reserva, descritivo FROM menu"
-    connection.query(sql, function (error, results) {
+    connection.query(sql, function (error, rows,fields) {
         if (error) callback(error)
-        callback(null, { sucess: true, message: results })
+        callback(null, { sucess: true, message: rows })
     })
     connection.end()
 
