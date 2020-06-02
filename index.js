@@ -31,6 +31,9 @@ app.use(reservationRouter)
 app.use(roomsRouter)
 app.use(workshopRouter)
 
-app.listen(config.port, () => {
+app.listen(process.env.port, () => {
     console.log(config.message);
 });
+// app.listen(config.port, () => {
+//     console.log(config.message);
+// });
