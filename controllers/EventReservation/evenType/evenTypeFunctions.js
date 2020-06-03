@@ -6,7 +6,7 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 //Retorna todos os dados da tabela tipo_reserva da base de dados
 function getEvenType(callback) {
     connection 
-    const sql = "SELECT descritivo FROM tipo_reserva"
+    const sql = "SELECT id_tipo_reserva,descritivo FROM tipo_reserva"
     connection.query(sql, function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
