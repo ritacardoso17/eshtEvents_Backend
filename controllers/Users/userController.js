@@ -36,8 +36,8 @@ function updateUser(req, result) {
     let img = req.file
     let pass = req.body.pass
     let id = req.params.id
-    bcrypt.hash(pass, 10, function (error, hash){
-        userFunctions.updateUser( hash, img.path, id, (error, sucess) => {
+    bcrypt.hash(pass, 10, function (error, hash) {
+        userFunctions.updateUser(hash, img.path, id, (error, sucess) => {
             if (error) {
                 throw error
                 return
@@ -58,10 +58,18 @@ function getUser(req, result) {
         result.json(sucess)
     })
 }
-
+function getSchool(req, result) {
+    userFunctions.getSchool((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 function getUserID(req, result) {
     let id = req.params.id
-    userFunctions.getUserID(id,(error, sucess) => {
+    userFunctions.getUserID(id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -103,4 +111,4 @@ function logout(req, result) {
     })
 }
 
-module.exports = { addUser: addUser, removeUser: removeUser,updateUser:updateUser, getUser:getUser,getUserID:getUserID,verifyLogin: verifyLogin, logout: logout }
+module.exports = { addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }

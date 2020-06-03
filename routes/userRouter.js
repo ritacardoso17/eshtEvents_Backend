@@ -12,6 +12,7 @@ router.put("/users/:id", middleware.verifyToken, saveImg.single('img'),controlle
 router.get("/users",middleware.verifyToken, controller.getUser)
 router.get("/users/:id",middleware.verifyToken, controller.getUserID)
 router.get("/",verify.landingPage)
+router.get("/schools",controller.getSchool)
 router.post("/login",verify.login)
 router.post("/logout", middleware.verifyToken, controller.logout)
 module.exports = router

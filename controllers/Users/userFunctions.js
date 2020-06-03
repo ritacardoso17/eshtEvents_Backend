@@ -91,6 +91,16 @@ function getUser(callback) {
     })
     connection 
 }
+
+function getSchool(callback) {
+    connection 
+    const sql = "SELECT id_escola,nome FROM instituicao"
+    connection.query(sql, function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection 
+}
 function getUserID(id, callback) {
     connection 
     const sql = "SELECT id_tipoUser,nome,password,foto_perfil,data_nascimento,telemovel,email_ipp FROM utilizador WHERE id_utilizador = ?"
@@ -100,4 +110,4 @@ function getUserID(id, callback) {
     })
     connection 
 }
-module.exports = { addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getUserID: getUserID, login: login, logout: logout }
+module.exports = { addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser,getSchool:getSchool,getUserID: getUserID, login: login, logout: logout }
