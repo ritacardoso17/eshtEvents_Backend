@@ -15,7 +15,7 @@ function addMenu(description, id_tipo_reserva, img, callback) {
 
     connection 
 }
-
+/**FAZER FUNÇOES PARA ALTERAR O RESTO DAS TABELAS */
 // Remove os dados dos menus consoante o id escolhido
 function removeMenu(id, callback) {
     connection 
