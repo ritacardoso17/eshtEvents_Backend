@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt")
 // Utiliza as funções dos users criadas e trata dos seus erros
 function addUser(req, result) {
     let name = req.body.name
-    let img = req.file
+    let img = req.body.img
     let pass = req.body.pass
     let data = req.body.data
     let telemovel = req.body.telemovel
