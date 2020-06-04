@@ -6,7 +6,7 @@ const controller = require("../controllers/Users/userController")
 const verify = new controller.verifyLogin
 router.post("/register", controller.addUser)
 router.delete("/users/:id", middleware.verifyToken, controller.removeUser)
-router.put("/users/:id", middleware.verifyToken, saveImg.single('img'),controller.updateUser)
+router.put("/users/:id", middleware.verifyToken,controller.updateUser)
 router.get("/users",middleware.verifyToken, controller.getUser)
 router.get("/users/:id",middleware.verifyToken, controller.getUserID)
 router.get("/",verify.landingPage)
