@@ -11,7 +11,7 @@ function addUser(req, result) {
     let idE = req.body.idE
     let email = req.body.email
     bcrypt.hash(pass, 10, function (error, hash) {
-        userFunctions.addUser(name, hash, img.path, data, telemovel, idE, email, (error, sucess) => {
+        userFunctions.addUser(name, hash, img, data, telemovel, idE, email, (error, sucess) => {
             if (error) {
                 throw error
                 return
