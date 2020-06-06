@@ -10,7 +10,7 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 function login(pass, email, callback) {
     connection
 
-    const sql = "SELECT email_ipp,password FROM utilizador WHERE email_ipp=?"
+    const sql = "SELECT id_tipoUser,email_ipp,password FROM utilizador WHERE email_ipp=?"
     connection.query(sql, [email], function (error, rows, fields) {
         if (!error) {
             //compara a password inserida com a password retornada pelo email 
