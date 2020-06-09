@@ -21,7 +21,7 @@ function login(pass, email, callback) {
                 if (results) {
                     //Se nao der err, ele cria um token que expira passado 2hrs
                     let token = jsonwebtoken.sign({ email: email }, config.secret, { expiresIn: '2h' })
-                    callback(null, { user: { id: rows[0].id_utilizador, typeUser: rows[0].id_tipoUser, imgProfile:rows[0].foto_perfil, password: pass, name: rows[0].nome, email: email, birthDate: rows[0].data_nascimento, school: rows[0].school }, token: token })
+                    callback(null, { user: { id: rows[0].id_utilizador, typeUser: rows[0].id_tipoUser, imgProfile:rows[0].foto_perfil, password: pass, name: rows[0].nome, email: email, birthDate: rows[0].data_nascimento, school: rows[0].school,token: token} })
                 }
             })
         }
