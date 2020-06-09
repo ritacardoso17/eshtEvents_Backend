@@ -10,7 +10,7 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 function login(pass, email, callback) {
     connection
 
-    const sql = "SELECT utilizador.id_tipoUser, utilizador.nome, utilizador.email_ipp, utilizador.password, utilizador.foto_perfil, data_nascimento, institucao.nome as school FROM utilizador,institucao WHERE email_ipp = ? && utilizador.id_ipp = institucao.id_ipp;"
+    const sql = "SELECT id_utilizador,utilizador.id_tipoUser, utilizador.nome, utilizador.email_ipp, utilizador.password, utilizador.foto_perfil, data_nascimento, institucao.nome as school FROM utilizador,institucao WHERE email_ipp = ? && utilizador.id_ipp = institucao.id_ipp;"
     connection.query(sql, [email], function (error, rows, fields) {
         if (!error) {
             //compara a password inserida com a password retornada pelo email 
@@ -21,7 +21,7 @@ function login(pass, email, callback) {
                 if (results) {
                     //Se nao der err, ele cria um token que expira passado 2hrs
                     let token = jsonwebtoken.sign({ email: email }, config.secret, { expiresIn: '2h' })
-                    callback(null, {rows, token: token })
+                    callback(null, { user: { id: rows[0].id_utilizador, typeUser: rows[0].id_tipoUser, imgProfile: foto_perfil, password: pass, name: rows[0].nome, email: email, birthDate: rows[0].data_nascimento, school: rows[0].school }, token: token })
                 }
             })
         }
