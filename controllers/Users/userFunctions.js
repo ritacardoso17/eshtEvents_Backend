@@ -17,6 +17,7 @@ function login(pass, email, callback) {
             bcrypt.compare(pass, rows[0].password, function (error, results) {
                 if (error) {
                     callback(error)
+                    alert(pass)
                 }
                 if (results) {
                     //Se nao der err, ele cria um token que expira passado 2hrs
