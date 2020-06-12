@@ -44,7 +44,7 @@ function updateMenu(id, id_tipo_reserva, description, img, callback) {
 function getMenu(callback) {
     connection 
 
-    const sql = "SELECT id_menu,tipo_reserva.descritivo,menu.descritivo as name FROM menu, tipo_reserva WHERE tipo_reserva.id_tipo_reserva = menu.id_tipo_reserva "
+    const sql = "SELECT id_menu,tipo_reserva.descritivo,menu.descritivo as name,img FROM menu, tipo_reserva WHERE tipo_reserva.id_tipo_reserva = menu.id_tipo_reserva "
     connection.query(sql, function (error, rows,fields) {
         if (error) callback(error)
         callback(null, { sucess: true, message: rows })
