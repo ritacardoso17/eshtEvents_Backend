@@ -44,7 +44,7 @@ function updateWorkshops(id,description, n_vacancies, date_hour, price, id_local
 function getWorkshops(callback) {
     connection 
 
-    const sql = "SELECT descritivo, nr_vagas, data_hora, preco, id_localizacao FROM inscricao_workshop"
+    const sql = "SELECT nome, nr_vagas, data_hora, preco,localizacao.descritivo as local,inscricao_workshop.descritivo FROM inscricao_workshop,localizacao WHERE localizacao.id_localizacao = inscricao_workshop.id_localizacao "
     connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
