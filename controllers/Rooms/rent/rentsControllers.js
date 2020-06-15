@@ -54,7 +54,7 @@ function getRentsId(req, result) {
 function getRentsUserId(req, result) {
     let id = req.params.id
 
-    reservationFunctions.getRentsUserId(id, (error, sucess) => {
+    rentsFunctions.getRentsUserId(id, (error, sucess) => {
         if (error) {
             throw error
             return
