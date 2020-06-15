@@ -47,6 +47,15 @@ function getReservationsId(id, callback) {
     })
     connection 
 }
+function getReservationsUserId(id, callback) {
+    connection 
+    const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao from reserva_evento WHERE id_utilizador=?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection 
+}
 //edita os dados da opinião de uma reserva consoante o seu id
 function updateOpinion(opinion, id, callback) {
     connection
@@ -62,5 +71,6 @@ module.exports = {
     removeReservations: removeReservations,
     getReservations: getReservations,
     getReservationsId: getReservationsId,
+    getReservationsUserId: getReservationsUserId,
     updateOpinion: updateOpinion
 }

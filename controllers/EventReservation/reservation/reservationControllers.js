@@ -58,6 +58,18 @@ function getReservationsId(req, result) {
     })
 }
 
+function getReservationsUserId(req, result) {
+    let id = req.params.id
+
+    reservationFunctions.getReservationsUserId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
 function updateOpinion(req, result) {
     let opinion = req.body.opinion
     let id = req.params.id
@@ -75,5 +87,6 @@ module.exports = {
     removeReservations: removeReservations,
     getReservations: getReservations,
     getReservationsId: getReservationsId,
+    getReservationsUserId: getReservationsUserId,
     updateOpinion: updateOpinion
 }
