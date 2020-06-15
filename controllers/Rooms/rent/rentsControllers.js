@@ -66,7 +66,7 @@ function getRentsUserId(req, result) {
 function updateOpinion(req, result) {
     let opinion = req.body.opinion
     let id = req.params.id
-    reservationFunctions.updateOpinion(opinion, id, (error, sucess) => {
+    rentsFunctions.updateOpinion(opinion, id, (error, sucess) => {
         if (error) {
             throw error
             return
