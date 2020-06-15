@@ -4,11 +4,11 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 // var connection = mySql.createConnection(dbConfig)
 
 //funcao criada para adicionar uma reserva a base de dados
-function addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, opinion, callback) {
+function addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, callback) {
     connection 
 
     const sql = "INSERT INTO reserva_evento (id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva, id_estado, id_menu, id_localizacao, id_decoracao) VALUES (?,?,?,?,?,?,?,?,?,?,?)"
-    connection.query(sql, [id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, 1, id_menu, id_local, id_decoration, opinion], function (error, results) {
+    connection.query(sql, [id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, 1, id_menu, id_local, id_decoration], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Reserva Adicionada" })
     })
@@ -49,7 +49,7 @@ function getReservationsId(id, callback) {
 }
 function getReservationsUserId(id, callback) {
     connection 
-    const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao from reserva_evento WHERE id_utilizador=?"
+    const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, tipo_reserva.descritivo as tipoReserva,estado.descritivo as estado, id_menu, id_localizacao, id_decoracao, opiniao FROM reserva_evento,tipo_reserva,estado WHERE id_utilizador=? AND tipo_reserva.id_tipo_reserva = reserva_evento.id_tipo_reserva AND estado.id_estado = reserva_evento.id_estado "
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
