@@ -51,9 +51,35 @@ function getRentsId(req, result) {
     })
 }
 
+function getRentsUserId(req, result) {
+    let id = req.params.id
+
+    reservationFunctions.getRentsUserId(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
+function updateOpinion(req, result) {
+    let opinion = req.body.opinion
+    let id = req.params.id
+    reservationFunctions.updateOpinion(opinion, id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
 module.exports = { 
     addRents: addRents,
     removeRents: removeRents,
     getRents: getRents,
-    getRentsId: getRentsId
+    getRentsId: getRentsId,
+    getRentsUserId: getRentsUserId,
+    updateOpinion: updateOpinion
 }

@@ -8,6 +8,6 @@ router.delete("/reservations/:id", middleware.verifyToken, controller.removeRese
 router.get("/reservations", controller.getReservations)
 // router.get("/reservations/:id", middleware.verifyToken, controller.getReservationsId)
 router.get("/reservations/:id", controller.getReservationsUserId)
-router.put("/opinions/:id", controller.updateOpinion)
+router.put("/reservOpinions/:id", controller.updateOpinion)
 
 module.exports = router
