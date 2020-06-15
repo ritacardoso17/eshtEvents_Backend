@@ -13,6 +13,7 @@ const decorationRouter = require("./routes/decorationRouter")
 const reservationRouter = require("./routes/reservationRouter")
 const roomsRouter = require("./routes/roomsRouter")
 const workshopRouter = require("./routes/workshopRouter")
+const stateRouter = require("./routes/stateRouter")
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,6 +31,7 @@ app.use(decorationRouter)
 app.use(reservationRouter)
 app.use(roomsRouter)
 app.use(workshopRouter)
+app.use(stateRouter)
 
 app.listen(process.env.PORT, () => {
     console.log(config.message);
