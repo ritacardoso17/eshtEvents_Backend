@@ -66,4 +66,22 @@ function getWorkshopsId(req, result) {
         result.json(sucess)
     })
 }
-module.exports = { addWorkshops: addWorkshops, removeWorkshops: removeWorkshops, updateWorkshops: updateWorkshops, getWorkshops: getWorkshops, getWorkshopsId: getWorkshopsId }
+function addUserWorkshops(req, result) {
+    let id_user = req.body.id_user
+    let id_workshop = req.body.id_workshop
+    workshopFunctions.addUserWorkshops(id_user, id_workshop, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+module.exports = { 
+    addWorkshops: addWorkshops,
+    removeWorkshops: removeWorkshops,
+    updateWorkshops: updateWorkshops,
+    getWorkshops: getWorkshops,
+    getWorkshopsId: getWorkshopsId,
+    addUserWorkshops: addUserWorkshops
+     }

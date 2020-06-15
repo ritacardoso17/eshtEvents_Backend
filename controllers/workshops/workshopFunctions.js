@@ -64,5 +64,23 @@ function getWorkshopsId( id, callback){
     })
     connection 
 }
+function addUserWorkshops(id_user, id_workshop, callback) {
+    connection 
 
-module.exports = { addWorkshops:addWorkshops, removeWorkshops:removeWorkshops, updateWorkshops:updateWorkshops, getWorkshops: getWorkshops, getWorkshopsId: getWorkshopsId }
+    const sql = "INSERT INTO workshop_utilizador (id_utilizador, id_workshop) VALUES (?,?)"
+    connection.query(sql, [id_user, id_workshop], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Workshop Adicionado" })
+    })
+
+    connection 
+}
+
+module.exports = { 
+    addWorkshops:addWorkshops,
+    removeWorkshops:removeWorkshops,
+    updateWorkshops:updateWorkshops,
+    getWorkshops: getWorkshops,
+    getWorkshopsId: getWorkshopsId,
+    addUserWorkshops: addUserWorkshops
+}
