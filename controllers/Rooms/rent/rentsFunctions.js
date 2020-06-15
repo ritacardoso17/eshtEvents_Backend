@@ -55,7 +55,7 @@ function getRentsId( id, callback){
 }
 function getRentsUserId(id, callback) {
     connection 
-    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao from reserva_evento WHERE id_utilizador=?"
+    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao from aluguer_espaco WHERE id_utilizador=?"
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
