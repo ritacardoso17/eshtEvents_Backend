@@ -40,7 +40,7 @@ function getReservations( callback) {
 //retorna os dados de uma so reserva selecionada por id
 function getReservationsId(id, callback) {
     connection 
-    const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, id_tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao from reserva_evento WHERE id_reserva=?"
+    const sql = "SELECT id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, tipo_reserva.descritivo as tipo_reserva,id_estado, id_menu, id_localizacao, id_decoracao, opiniao from reserva_evento,tipo_reserva WHERE id_reserva=? AND tipo_reserva.id_tipo_reserva = reserva_evento.id_tipo_reserva "
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
