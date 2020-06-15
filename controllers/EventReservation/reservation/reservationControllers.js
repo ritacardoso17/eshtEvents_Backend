@@ -35,9 +35,9 @@ function removeReservations(req, result) {
 }
 
 function getReservations(req, result) {
-    let id = req.params.id
+  
 
-    reservationFunctions.getReservations(id, (error, sucess) => {
+    reservationFunctions.getReservations( (error, sucess) => {
         if (error) {
             throw error
             return
