@@ -13,8 +13,9 @@ function addReservations(req, result) {
     let id_menu = req.body.id_menu
     let id_local = req.body.id_local
     let id_decoration = req.body.id_decoration
+    let opinion = req.body.opinion
 
-    reservationFunctions.addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, (error, sucess) => {
+    reservationFunctions.addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, opinion, (error, sucess) => {
         if (error) {
             throw error
             return
