@@ -33,7 +33,7 @@ function removeRents(id, callback) {
 function getRents(callback) {
     connection 
 
-    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco FROM aluguer_espaco"
+    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao FROM aluguer_espaco"
     connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
@@ -46,17 +46,38 @@ function getRents(callback) {
 function getRentsId( id, callback){
     connection 
 
-    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco FROM aluguer_espaco WHERE id_aluguer=?"
+    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao FROM aluguer_espaco WHERE id_aluguer=?"
     connection.query(sql, [id], function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
     connection 
 }
+function getRentsUserId(id, callback) {
+    connection 
+    const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao from reserva_evento WHERE id_utilizador=?"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection 
+}
+//edita os dados da opinião de uma reserva consoante o seu id
+function updateOpinion(opinion, id, callback) {
+    connection
+    const sql = "UPDATE aluguer_espaco SET opiniao=? WHERE id_aluguer = ? "
+    connection.query(sql, [opinion, id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Opinião Editada" })
+    })
+    connection
+}
 
 module.exports = { 
     addRents: addRents,
     removeRents: removeRents,
     getRents: getRents,
-    getRentsId: getRentsId
+    getRentsId: getRentsId,
+    getRentsUserId: getRentsUserId,
+    updateOpinion: updateOpinion
 }
