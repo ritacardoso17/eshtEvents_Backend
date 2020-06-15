@@ -47,10 +47,20 @@ function getReservationsId(id, callback) {
     })
     connection 
 }
-
+//edita os dados da opinião de uma reserva consoante o seu id
+function updateOpinion(opinion, id, callback) {
+    connection
+    const sql = "UPDATE reserva_evento SET opiniao=? WHERE id_reserva = ? "
+    connection.query(sql, [opinion, id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Opinião Editada" })
+    })
+    connection
+}
 module.exports = {
     addReservations: addReservations,
     removeReservations: removeReservations,
     getReservations: getReservations,
-    getReservationsId: getReservationsId
+    getReservationsId: getReservationsId,
+    updateOpinion: updateOpinion
 }

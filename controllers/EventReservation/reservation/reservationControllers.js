@@ -2,7 +2,7 @@
 
 const reservationFunctions = require("./reservationFunctions")
 
-function addReservations(req, result){
+function addReservations(req, result) {
     let id_extra = req.body.id_extra
     let id_user = req.body.id_user
     let n_people = req.body.n_people
@@ -35,9 +35,9 @@ function removeReservations(req, result) {
 }
 
 function getReservations(req, result) {
-  
 
-    reservationFunctions.getReservations( (error, sucess) => {
+
+    reservationFunctions.getReservations((error, sucess) => {
         if (error) {
             throw error
             return
@@ -58,9 +58,22 @@ function getReservationsId(req, result) {
     })
 }
 
-module.exports = { 
+function updateOpinion(req, result) {
+    let opinion = req.body.opinion
+    let id = req.params.id
+    reservationFunctions.updateOpinion(opinion, id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+
+module.exports = {
     addReservations: addReservations,
     removeReservations: removeReservations,
     getReservations: getReservations,
-    getReservationsId: getReservationsId
+    getReservationsId: getReservationsId,
+    updateOpinion: updateOpinion
 }
