@@ -70,9 +70,9 @@ function getMenuType(id_menu_type, callback) {
     connection 
 
     const sql = "SELECT id_menu, descritivo, img FROM menu WHERE id_tipo_reserva=?"
-    connection.query(sql, [id_menu_type], function (error, results) {
+    connection.query(sql, [id_menu_type], function (error, rows, fields) {
         if (error) callback(error)
-        callback(null, { sucess: true, message: results })
+        callback(null, { sucess: true, message: rows })
     })
     connection 
 }
