@@ -3,7 +3,11 @@
 const decorationFunctions = require("./decorationFunctions")
 
 function getDecoration(req, result) {
-    decorationFunctions.getDecoration(description,id, (error, sucess) => {
+    let id = req.params.id
+    let description = req.body.description
+    let img = req.body.img
+
+    decorationFunctions.getDecoration(description, img, id, (error, sucess) => {
         if (error) {
             throw error
             return
