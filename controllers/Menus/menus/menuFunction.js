@@ -5,7 +5,7 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 
 // Adiciona menus
 function addMenu(description, id_tipo_reserva, img, callback) {
-    connection 
+    connection
 
     const sql = "INSERT INTO menu (id_tipo_reserva,descritivo,img) VALUES (?, ?,?)"
     connection.query(sql, [id_tipo_reserva, description, img], function (error, results) {
@@ -13,12 +13,12 @@ function addMenu(description, id_tipo_reserva, img, callback) {
         callback(null, { sucess: true, message: "Menu Adicionada" })
     })
 
-    connection 
+    connection
 }
 /**FAZER FUNÇOES PARA ALTERAR O RESTO DAS TABELAS */
 // Remove os dados dos menus consoante o id escolhido
 function removeMenu(id, callback) {
-    connection 
+    connection
 
     const sql = "DELETE FROM menu WHERE id_menu = ?"
     connection.query(sql, [id], function (error, results) {
@@ -26,55 +26,64 @@ function removeMenu(id, callback) {
         callback(null, { sucess: true, message: "Menu Removido" })
     })
 
-    connection 
+    connection
 }
 
 // Altera os dados dos menus consoante o id escolhido
 function updateMenu(id, id_tipo_reserva, description, img, callback) {
-    connection 
+    connection
     const sql = "UPDATE menu SET id_tipo_reserva=?, descritivo=?,img=? WHERE id_menu=? "
     connection.query(sql, [id_tipo_reserva, description, img, id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Menu Editado" })
     })
-    connection 
+    connection
 }
 
 // Retorna os dados de todos os menus
 function getMenu(callback) {
-    connection 
+    connection
 
     const sql = "SELECT id_menu,tipo_reserva.descritivo,menu.descritivo as name,img FROM menu, tipo_reserva WHERE tipo_reserva.id_tipo_reserva = menu.id_tipo_reserva "
-    connection.query(sql, function (error, rows,fields) {
+    connection.query(sql, function (error, rows, fields) {
         if (error) callback(error)
         callback(null, { sucess: true, message: rows })
     })
-    connection 
+    connection
 
 }
 
 // Retorna os dados dos menus consoante o id escolhido
 function getMenuId(id, callback) {
-    connection 
+    connection
 
     const sql = "SELECT id_menu, id_tipo_reserva, descritivo FROM menu WHERE id_menu=?"
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
-    connection 
+    connection
 }
 
 // Retorna os dados dos menus consoante o id do tipo de menu escolhido
 function getMenuType(id_menu_type, callback) {
-    connection 
+    connection
 
     const sql = "SELECT id_menu, descritivo, img FROM menu WHERE id_tipo_reserva=?"
     connection.query(sql, [id_menu_type], function (error, rows, fields) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: rows })
+        if (error) { callback(error) }
+        else {
+            callback(null, {
+                sucess: true, message: {
+                    id: rows[0].id_menu,
+                    name: rows[0].descritivo,
+                    img: rows[0].img
+                }
+            })
+        }
+
     })
-    connection 
+    connection
 }
 
 module.exports = {
