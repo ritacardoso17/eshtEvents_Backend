@@ -95,9 +95,13 @@ function getUser(callback) {
 function getSchool(callback) {
     connection
     const sql = "SELECT id_ipp,nome FROM institucao"
-    connection.query(sql, function (error, results) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: results })
+    connection.query(sql, function (error, rows, fields) {
+        if (error) {
+            callback(error)
+        }
+        else {
+            callback(null, { sucess: true, message: rows })
+        }
     })
     connection
 }
