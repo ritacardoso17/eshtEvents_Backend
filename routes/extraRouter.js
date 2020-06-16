@@ -4,7 +4,7 @@ var router = Router()
 
 const controller = require("../controllers/EventReservation/extra/extraControllers")
 
-router.get("/extras", middleware.verifyToken, controller.getExtra)
-router.get("/extras/:id", middleware.verifyToken, controller.getExtraId)
+router.get("/extras", controller.getExtra)
+router.get("/extras/:id", controller.getExtraId)
 
 module.exports = router
