@@ -5,9 +5,10 @@ const uniformFunctions = require("./uniformFunction")
 function getUniform(req, result) {
     let name = req.body.name
     let img = ""
+    let id_uniform = req.params.id_uniform
     let id = req.params.id
 
-    uniformFunctions.getUniform(name,img,id, (error, sucess) => {
+    uniformFunctions.getUniform(name,img,id_uniform, id, (error, sucess) => {
         if (error) {
             throw error
             return

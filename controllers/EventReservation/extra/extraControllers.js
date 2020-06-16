@@ -3,8 +3,10 @@
 const extraFunctions = require("./extraFunctions")
 
 function getExtra(req, result) {
+    let id = req.params.id
+    let name = req.body.name
 
-    extraFunctions.getExtra((error, sucess) => {
+    extraFunctions.getExtra(id, name, (error, sucess) => {
         if (error) {
             throw error
             return

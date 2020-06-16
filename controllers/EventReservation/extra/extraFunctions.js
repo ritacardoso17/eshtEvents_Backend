@@ -4,11 +4,11 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 // var connection = mySql.createConnection(dbConfig)
 
 //retorna todos os dados da tabela extra
-function getExtra(callback) {
+function getExtra(id, name, callback) {
     connection 
 
     const sql = "SELECT descritivo FROM extra"
-    connection.query(sql, function(error, results){
+    connection.query(sql, [id, name], function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
