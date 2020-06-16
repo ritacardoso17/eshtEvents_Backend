@@ -6,7 +6,7 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 //retorna dados da tabela farda na tabela base de dados
 function getUniform(name, img, id_uniform, id, callback) {
     connection 
-    const sql = "SELECT id_ farda, descritivo, img FROM farda"
+    const sql = "SELECT id_farda, descritivo, img FROM farda"
     connection.query(sql, [name, img, id_uniform, id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
