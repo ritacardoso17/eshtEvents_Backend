@@ -6,7 +6,7 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 // Retorna todos os dados dos espaços
 function getRooms(callback) {
     connection 
-    const sql = "SELECT descritivo, img FROM tipo_espaco"
+    const sql = "SELECT id_espaco, descritivo, img FROM tipo_espaco"
     connection.query(sql, function (error, rows, fields) {
         if (error) callback(error)
         callback(null, { sucess: true, message: rows})
