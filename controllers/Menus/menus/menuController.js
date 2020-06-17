@@ -65,9 +65,9 @@ function getMenuId(req, result) {
 }
 
 function getMenuType(req, result) {
-    let id_menu_type = req.params.id_menu_type
+    let id = req.params.id
 
-    menuFunctions.getMenuType(id_menu_type, (error, sucess) => {
+    menuFunctions.getMenuType(id, (error, sucess) => {
         if (error) {
             throw error
             return
