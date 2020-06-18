@@ -20,7 +20,7 @@ function login(pass, email, callback) {
                 }
                 if (results) {
                     //Se nao der err, ele cria um token que expira passado 2hrs
-                    let token = jsonwebtoken.sign({ email: email }, config.secret, { expiresIn: '2h' })
+                    let token = jsonwebtoken.sign({ email: email }, config.secret, { expiresIn: '24h' })
                     callback(null, { user: rows, token: token })
                 }
             })
