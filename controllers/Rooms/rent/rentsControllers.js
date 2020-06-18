@@ -8,9 +8,8 @@ function addRents(req, result){
     let duration = req.body.duration
     let id_room = req.body.id_room
     let reason = req.body.reason
-    let opinion = req.body.opinion
 
-    rentsFunctions.addRents(id_user, date_reserv, date_required, duration, id_room, reason, opinion, (error, sucess) => {
+    rentsFunctions.addRents(id_user, date_reserv, date_required, duration, id_room, reason, (error, sucess) => {
         if (error) {
             throw error
             return
