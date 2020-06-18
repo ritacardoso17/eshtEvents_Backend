@@ -7,7 +7,7 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 function getExtra(id, name, callback) {
     connection 
 
-    const sql = "SELECT descritivo FROM extra"
+    const sql = "SELECT id_extra, descritivo FROM extra"
     connection.query(sql, [id, name], function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
