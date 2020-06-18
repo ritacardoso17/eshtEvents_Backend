@@ -3,7 +3,7 @@ const rentsFunctions = require("./rentsFunctions")
 // Utiliza as funções dos alugueres criadas e trata dos seus erros
 function addRents(req, result){
     let id_user = req.body.id_user
-    let date_reserv = "ola"
+    let date_reserv = "1111-11-11"
     let date_required = req.body.date_required
     let duration = req.body.duration
     let id_room = req.body.id_room
