@@ -34,10 +34,11 @@ function removeUser(req, result) {
 
 function updateUser(req, result) {
     let img = req.body.img
+    let oldPass = req.body.oldPass
     let pass = req.body.pass
     let id = req.params.id
     bcrypt.hash(pass, 10, function (error, hash) {
-        userFunctions.updateUser(hash, img.path, id, (error, sucess) => {
+        userFunctions.updateUser(hash, oldPass, img, id, (error, sucess) => {
             if (error) {
                 throw error
                 return
