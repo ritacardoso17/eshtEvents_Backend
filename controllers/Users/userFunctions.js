@@ -74,7 +74,7 @@ function removeUser(id, callback) {
 //editar utilizador: mudar pass e img 
 function updateUser(pass, oldPass, img, id, callback) {
     connection
-    if (!(pass === null || passs === "" || pass === undefined)) {
+    if (!(pass === null || pass === "" || pass === undefined)) {
         // const verify = "SELECT password FROM utilizador WHERE id_utilizador= ?;"
         // connection.query(verify, [id], function (error, rows, fields) {
         //     if (!error) {
