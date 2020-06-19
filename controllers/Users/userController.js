@@ -39,7 +39,7 @@ function updateUser(req, result) {
     let id = req.params.id
 
     if (!(img === null || img === "" || img === undefined)) {
-        userFunctions.updateUserPass(img, id, (error, sucess) => {
+        userFunctions.updateUser(img, id, (error, sucess) => {
             if (error) {
                 throw error
                 return
