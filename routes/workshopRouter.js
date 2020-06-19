@@ -10,6 +10,6 @@ router.delete("/workshops/:id", middleware.verifyToken, controller.removeWorksho
 router.put("/workshops/:id", middleware.verifyToken, saveImg.single('img'), controller.updateWorkshops)
 router.get("/workshops", controller.getWorkshops)
 router.get("/workshops/:id", controller.getWorkshopsId)
-router.post("/workshops", controller.addUserWorkshops)
+router.post("/userWorkshops", controller.addUserWorkshops)
 
 module.exports = router
