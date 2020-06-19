@@ -85,22 +85,22 @@ function updateUser( img, id, callback) {
 //editar utilizador: mudar pass e img 
 function updateUserPass(pass, oldPass, id, callback) {
     connection
-        // const verify = "SELECT password FROM utilizador WHERE id_utilizador= ?;"
-        // connection.query(verify, [id], function (error, rows, fields) {
-        //     if (!error) {
-        //         bcrypt.compare(oldPass, rows[0].password, function (err, res) {
-        //             if (err) {
-        //                 callback("Password atual incorreta")
-        //             }
-        //             if (res) {
+        const verify = "SELECT password FROM utilizador WHERE id_utilizador= ?;"
+        connection.query(verify, [id], function (error, rows, fields) {
+            if (!error) {
+                bcrypt.compare(oldPass, rows[0].password, function (err, res) {
+                    if (err) {
+                        callback("Password atual incorreta")
+                    }
+                    if (res) {
                         const sql = "UPDATE utilizador SET password=? WHERE id_utilizador = ? "
                         connection.query(sql, [pass, id], function (error, results) {
                             if (error) callback(error)
                             callback(null, { sucess: true, message: "Utilizador Editado" })
-        //                 })
-        //             }
-        //         })
-            // }
+                        })
+                    }
+                })
+            }
         })
         
   
