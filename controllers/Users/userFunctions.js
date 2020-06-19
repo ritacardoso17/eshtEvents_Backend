@@ -76,7 +76,7 @@ function updateUser(pass, oldPass, img, id, callback) {
     connection
     if (pass != "" && img == "") {
         const verify = "SELECT password FROM utilizador WHERE id_utilizador= ?;"
-        connection.query(verify, [id], function (error, rows, results) {
+        connection.query(verify, [id], function (error, rows, fields) {
             if (!error) {
                 bcrypt.compare(oldPass, rows[0].password, function (err, res) {
                     if (err) {
