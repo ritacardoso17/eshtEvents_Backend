@@ -33,7 +33,7 @@ function removeUser(req, result) {
 }
 
 function updateUser(req, result) {
-    let img = req.file
+    let img = req.body.img
     let pass = req.body.pass
     let id = req.params.id
     bcrypt.hash(pass, 10, function (error, hash) {
