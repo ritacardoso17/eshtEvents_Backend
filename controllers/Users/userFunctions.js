@@ -72,9 +72,19 @@ function removeUser(id, callback) {
 }
 
 //editar utilizador: mudar pass e img 
-function updateUser(pass, oldPass, img, id, callback) {
+function updateUser( img, id, callback) {
     connection
-    if (!(pass === null || pass === "" || pass === undefined)) {
+    
+        const sql = "UPDATE utilizador SET foto_perfil=? WHERE id_utilizador = ? "
+        connection.query(sql, [img, id], function (error, results) {
+            if (error) callback(error)
+            callback(null, { sucess: true, message: "Utilizador Editado" })
+        })
+    connection
+}
+//editar utilizador: mudar pass e img 
+function updateUserPass(pass, oldPass, id, callback) {
+    connection
         // const verify = "SELECT password FROM utilizador WHERE id_utilizador= ?;"
         // connection.query(verify, [id], function (error, rows, fields) {
         //     if (!error) {
@@ -93,15 +103,7 @@ function updateUser(pass, oldPass, img, id, callback) {
             // }
         })
         
-    }
-    if (!(img === null || img === "" || img === undefined)) {
-      
-        const sql = "UPDATE utilizador SET foto_perfil=? WHERE id_utilizador = ? "
-        connection.query(sql, [img, id], function (error, results) {
-            if (error) callback(error)
-            callback(null, { sucess: true, message: "Utilizador Editado" })
-        })
-    }
+  
     connection
 }
 //Getssss
@@ -137,4 +139,4 @@ function getUserID(id, callback) {
     })
     connection
 }
-module.exports = { addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }
+module.exports = { updateUserPass:updateUserPass, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }

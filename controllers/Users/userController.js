@@ -37,15 +37,29 @@ function updateUser(req, result) {
     let oldPass = req.body.oldPass
     let pass = req.body.pass
     let id = req.params.id
-    bcrypt.hash(pass, 10, function (error, hash) {
-        userFunctions.updateUser(hash, oldPass, img, id, (error, sucess) => {
+
+    if (!(img === null || img === "" || img === undefined)) {
+        userFunctions.updateUserPass(img, id, (error, sucess) => {
             if (error) {
                 throw error
                 return
             }
             result.json(sucess)
         })
-    })
+    }
+
+    if (!(pass === null || pass === "" || pass === undefined)) {
+        bcrypt.hash(pass, 10, function (error, hash) {
+            userFunctions.updateUserPass(hash, oldPass, id, (error, sucess) => {
+                if (error) {
+                    throw error
+                    return
+                }
+                result.json(sucess)
+            })
+        })
+
+    }
 
 }
 
