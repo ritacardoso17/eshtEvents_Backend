@@ -74,7 +74,7 @@ function removeUser(id, callback) {
 //editar utilizador: mudar pass e img 
 function updateUser(pass, oldPass, img, id, callback) {
     connection
-    if (pass == "" && img != "") {
+    if (pass != "" && img == "") {
         const verify = "SELECT password FROM utilizador WHERE id_utilizador= ?;"
         connection.query(verify, [id], function (error, rows, results) {
             if (!error) {
@@ -83,8 +83,8 @@ function updateUser(pass, oldPass, img, id, callback) {
                         callback("Password atual incorreta")
                     }
                     if (res) {
-                        const sql = "UPDATE utilizador SET foto_perfil=? WHERE id_utilizador = ? "
-                        connection.query(sql, [img, id], function (error, results) {
+                        const sql = "UPDATE utilizador SET password=? WHERE id_utilizador = ? "
+                        connection.query(sql, [pass, id], function (error, results) {
                             if (error) callback(error)
                             callback(null, { sucess: true, message: "Utilizador Editado" })
                         })
@@ -94,9 +94,10 @@ function updateUser(pass, oldPass, img, id, callback) {
         })
         
     }
-    if (pass != "" && img == "") {
-        const sql = "UPDATE utilizador SET password=? WHERE id_utilizador = ? "
-        connection.query(sql, [pass, id], function (error, results) {
+    if (pass == "" && img != "") {
+      
+        const sql = "UPDATE utilizador SET foto_perfil=? WHERE id_utilizador = ? "
+        connection.query(sql, [img, id], function (error, results) {
             if (error) callback(error)
             callback(null, { sucess: true, message: "Utilizador Editado" })
         })
