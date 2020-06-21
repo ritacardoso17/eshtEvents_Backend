@@ -94,7 +94,7 @@ function getUserID(req, result) {
 }
 function updateTypeUser(req, result) {
     let id = req.params.id
-    let tipoUser = req.params.tipoUser
+    let tipoUser = req.body.tipoUser
     userFunctions.updateTypeUser(id,tipoUser, (error, sucess) => {
         if (error) {
             throw error
