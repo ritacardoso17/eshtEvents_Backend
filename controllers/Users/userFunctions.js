@@ -108,7 +108,7 @@ function updateUserPass(pass, oldPass, id, callback) {
 }
 function updateTypeUser(tipoUser, id, callback) {
     connection
-    if (tipoUser === "Admin") {
+    if (tipoUser === "Administrador") {
         const sql = "UPDATE utilizador SET id_tipoUser=2 WHERE id_utilizador = ? "
         connection.query(sql, [id], function (error, results) {
             if (error) callback(error)
