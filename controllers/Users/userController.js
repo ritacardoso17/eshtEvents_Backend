@@ -95,13 +95,15 @@ function getUserID(req, result) {
 function updateTypeUser(req, result) {
     let id = req.params.id
     let tipoUser = req.body.tipoUser
-    userFunctions.updateTypeUser(id,tipoUser, (error, sucess) => {
-        if (error) {
-            throw error
-            return
-        }
-        result.json(sucess)
-    })
+    if (tipoUser === "Administrador") {
+        userFunctions.updateTypeUserA(id, (error, sucess) => {
+            if (error) {
+                throw error
+                return
+            }
+            result.json(sucess)
+        })
+    }
 }
 
 // Class para Login
@@ -137,4 +139,4 @@ function logout(req, result) {
     })
 }
 
-module.exports = { updateTypeUser:updateTypeUser,addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }
+module.exports = { updateTypeUser: updateTypeUser, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }

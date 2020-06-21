@@ -106,25 +106,26 @@ function updateUserPass(pass, oldPass, id, callback) {
 
     connection
 }
-function updateTypeUser(tipoUser, id, callback) {
+function updateTypeUserA(id, tipoUser, callback) {
     connection
-    if (tipoUser === "Administrador") {
-        const sql = "UPDATE utilizador SET id_tipoUser=2 WHERE id_utilizador = ? "
-        connection.query(sql, [id], function (error, results) {
-            if (error) callback(error)
-            callback(null, { sucess: true, message: "Utilizador Editado" })
-        })
-    }
-    else {
-        const sql = "UPDATE utilizador SET id_tipoUser=1 WHERE id_utilizador = ? "
-        connection.query(sql, [id], function (error, results) {
-            if (error) callback(error)
-            callback(null, { sucess: true, message: "Utilizador Editado" })
-        })
-    }
+
+    const sql = "UPDATE utilizador SET id_tipoUser=2 WHERE id_utilizador = ? "
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Utilizador Editado" })
+    })
+
 
     connection
 }
+
+// const sql = "UPDATE utilizador SET id_tipoUser=1 WHERE id_utilizador = ? "
+// connection.query(sql, [id], function (error, results) {
+//     if (error) callback(error)
+//     callback(null, { sucess: true, message: "Utilizador Editado" })
+// })
+
+
 //Getssss
 function getUser(callback) {
     connection
@@ -158,4 +159,4 @@ function getUserID(id, callback) {
     })
     connection
 }
-module.exports = { updateTypeUser:updateTypeUser,updateUserPass: updateUserPass, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }
+module.exports = { updateTypeUserA: updateTypeUserA, updateUserPass: updateUserPass, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }
