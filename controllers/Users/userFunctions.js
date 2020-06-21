@@ -109,7 +109,7 @@ function updateUserPass(pass, oldPass, id, callback) {
 //Getssss
 function getUser(callback) {
     connection
-    const sql = "SELECT id_tipoUser,nome,password,foto_perfil,data_nascimento,telemovel,email_ipp FROM utilizador"
+    const sql = "SELECT id_utilizador,tipo_user.descritivo as tipoUser,utilizador.nome,password,foto_perfil,data_nascimento,telemovel,institucao.nome as escola FROM utilizador,institucao, tipo_user WHERE tipo_user.id_tipo_user = utilizador.id_tipoUser AND institucao.id_ipp = utilizador.id_ipp"
     connection.query(sql, function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
