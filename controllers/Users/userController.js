@@ -92,6 +92,17 @@ function getUserID(req, result) {
         result.json(sucess)
     })
 }
+function updateTypeUser(req, result) {
+    let id = req.params.id
+    let tipoUser = req.params.tipoUser
+    userFunctions.updateTypeUser(id,tipoUser, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 
 // Class para Login
 class verifyLogin {
@@ -126,4 +137,4 @@ function logout(req, result) {
     })
 }
 
-module.exports = { addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }
+module.exports = { updateTypeUser:updateTypeUser,addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }
