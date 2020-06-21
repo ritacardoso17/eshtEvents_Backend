@@ -94,16 +94,15 @@ function getUserID(req, result) {
 }
 function updateTypeUser(req, result) {
     let id = req.params.id
-    let tipoUser = req.body.tipoUser
-    if (tipoUser === "Administrador") {
-        userFunctions.updateTypeUserA(id, (error, sucess) => {
-            if (error) {
-                throw error
-                return
-            }
-            result.json(sucess)
-        })
-    }
+
+    userFunctions.updateTypeUserA(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+
 }
 
 // Class para Login

@@ -106,7 +106,7 @@ function updateUserPass(pass, oldPass, id, callback) {
 
     connection
 }
-function updateTypeUserA(id, tipoUser, callback) {
+function updateTypeUserA(id, callback) {
     connection
 
     const sql = "UPDATE utilizador SET id_tipoUser=2 WHERE id_utilizador = ? "
