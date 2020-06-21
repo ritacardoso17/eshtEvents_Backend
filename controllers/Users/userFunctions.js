@@ -118,12 +118,18 @@ function updateTypeUserA(id, callback) {
 
     connection
 }
+function updateTypeUserC(id, callback) {
+    connection
 
-// const sql = "UPDATE utilizador SET id_tipoUser=1 WHERE id_utilizador = ? "
-// connection.query(sql, [id], function (error, results) {
-//     if (error) callback(error)
-//     callback(null, { sucess: true, message: "Utilizador Editado" })
-// })
+    const sql = "UPDATE utilizador SET id_tipoUser=1 WHERE id_utilizador = ? "
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: "Utilizador Editado" })
+    })
+
+    connection
+}
+
 
 
 //Getssss
@@ -159,4 +165,4 @@ function getUserID(id, callback) {
     })
     connection
 }
-module.exports = { updateTypeUserA: updateTypeUserA, updateUserPass: updateUserPass, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }
+module.exports = {updateTypeUserC:updateTypeUserC, updateTypeUserA: updateTypeUserA, updateUserPass: updateUserPass, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }

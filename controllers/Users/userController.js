@@ -92,10 +92,22 @@ function getUserID(req, result) {
         result.json(sucess)
     })
 }
-function updateTypeUser(req, result) {
+function updateTypeUserA(req, result) {
     let id = req.params.id
 
     userFunctions.updateTypeUserA(id, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+
+}
+function updateTypeUserC(req, result) {
+    let id = req.params.id
+
+    userFunctions.updateTypeUserC(id, (error, sucess) => {
         if (error) {
             throw error
             return
@@ -138,4 +150,4 @@ function logout(req, result) {
     })
 }
 
-module.exports = { updateTypeUser: updateTypeUser, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }
+module.exports = { updateTypeUserC:updateTypeUserC,updateTypeUserA: updateTypeUserA, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }
