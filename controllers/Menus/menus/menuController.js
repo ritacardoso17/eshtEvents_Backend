@@ -30,7 +30,7 @@ function updateMenu(req, result) {
     let id = req.params.id
     let id_tipo_reserva = req.body.id_tipo_reserva
     let description = req.body.description
-    let img = req.file
+    let img = req.body.img
 
     menuFunctions.updateMenu(id, id_tipo_reserva, description, img.path, (error, sucess) => {
         if (error) {
