@@ -28,11 +28,12 @@ function removeMenu(req, result) {
 
 function updateMenu(req, result) {
     let id = req.params.id
+    let  id_componente = req.body. id_componente
     let id_tipo_reserva = req.body.id_tipo_reserva
     let description = req.body.description
     let img = req.body.img
 
-    menuFunctions.updateMenu(id, id_tipo_reserva, description, img.path, (error, sucess) => {
+    menuFunctions.updateMenu(id, id_tipo_reserva, description, img,id_componente, (error, sucess) => {
         if (error) {
             throw error
             return
