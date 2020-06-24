@@ -27,6 +27,7 @@ function getComponents(id, name, callback) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
+        
 }
 //retrona dados de so um componente
 function getComponentsId(id, callback) {
@@ -36,8 +37,17 @@ function getComponentsId(id, callback) {
         callback(null, { sucess: true, message: results })
     })
 }
-
+function getAllComponents( callback) {
+    connection
+    const sql = "SELECT * FROM componente "
+    connection.query(sql, function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+    connection
+}
 module.exports = {
+    getAllComponents:getAllComponents,
     addComponents: addComponents,
     removeComponents: removeComponents,
     getComponents: getComponents,
