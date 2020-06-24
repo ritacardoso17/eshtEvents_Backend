@@ -84,44 +84,28 @@ function updateUserPass(pass, oldPass, id, callback) {
         //         })
         // }
     })
-
-
-    connection
 }
-function updateTypeUserA(id, callback) {
-    connection
 
+function updateTypeUserA(id, callback) {
     const sql = "UPDATE utilizador SET id_tipoUser=2 WHERE id_utilizador = ? "
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Utilizador Editado" })
     })
-
-
-    connection
 }
 function updateTypeUserC(id, callback) {
-    connection
-
     const sql = "UPDATE utilizador SET id_tipoUser=1 WHERE id_utilizador = ? "
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Utilizador Editado" })
     })
-
-    connection
 }
 
 
 
 //Getssss
 function getUser(callback) {
-<<<<<<< HEAD
-    const sql = "SELECT id_tipoUser,nome,password,foto_perfil,data_nascimento,telemovel,email_ipp FROM utilizador"
-=======
-    connection
     const sql = "SELECT id_utilizador,tipo_user.descritivo as tipoUser,utilizador.nome,password,foto_perfil,data_nascimento,telemovel,email_ipp,institucao.nome as escola FROM utilizador,institucao, tipo_user WHERE tipo_user.id_tipo_user = utilizador.id_tipoUser AND institucao.id_ipp = utilizador.id_ipp"
->>>>>>> b11e2c5e03611d41a560115861abea6eb5164ec7
     connection.query(sql, function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
@@ -146,9 +130,5 @@ function getUserID(id, callback) {
         callback(null, { sucess: true, message: results })
     })
 }
-<<<<<<< HEAD
 
-module.exports = { updateUserPass: updateUserPass, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }
-=======
 module.exports = {updateTypeUserC:updateTypeUserC, updateTypeUserA: updateTypeUserA, updateUserPass: updateUserPass, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, login: login, logout: logout }
->>>>>>> b11e2c5e03611d41a560115861abea6eb5164ec7
