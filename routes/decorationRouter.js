@@ -7,4 +7,4 @@ const controller = require("../controllers/EventReservation/decoration/decoratio
 router.get("/decorations",middleware.verifyToken, controller.getDecoration)
 router.get("/decorations/:id", controller.getDecorationID)
 
-module.exports = router
+module.exports = router     
