@@ -9,8 +9,8 @@ const controller = require("../controllers/Menus/menus/menuController")
 router.post("/menus", middleware.verifyToken, saveImg.single('img'), controller.addMenu)
 router.delete("/menus/:id", middleware.verifyToken, controller.removeMenu)
 router.put("/menus/:id", middleware.verifyToken, saveImg.single('img'), controller.updateMenu)
-router.get("/menus", controller.getMenu)
+router.get("/menus", middleware.verifyToken, controller.getMenu)
 router.get("/menus/:id", controller.getMenuId)
-router.get("/menuTypesById/:id", controller.getMenuType)
+router.get("/menuTypesById/:id", middleware.verifyToken, controller.getMenuType)
 
 module.exports = router
