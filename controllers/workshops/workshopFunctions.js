@@ -1,9 +1,9 @@
 let connection = require('../../database/dbConfig.js')
 
 // Adiciona os workshops
-function addWorkshops(description, n_vacancies, date_hour, price, id_local, img, callback) {
-    const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, id_localizacao,img) VALUES (?,?,?,?,?,?)"
-    connection.query(sql, [description, n_vacancies, date_hour, price, id_local,img], function (error, results) {
+function addWorkshops(description, n_vacancies, date_hour, id_local, img, callback) {
+    const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, id_localizacao, img) VALUES (?,?,?,?,?)"
+    connection.query(sql, [description, n_vacancies, date_hour, id_local,img], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Workshop Adicionado" })
     })
@@ -19,9 +19,9 @@ function removeWorkshops(id, callback) {
 }
 
 // Altera certos elementos dos workshops
-function updateWorkshops(id,description, n_vacancies, date_hour, price, id_local,img, callback) {
+function updateWorkshops(id,description, n_vacancies, date_hour, id_local,img, callback) {
     const sql = "UPDATE inscricao_workshop SET descritivo=?, nr_vagas=?, data_hora=?, id_localizacao=?,img=? WHERE id_workshop=? "
-    connection.query(sql, [description, n_vacancies, date_hour, price, id_local,img,id], function (error, results) {
+    connection.query(sql, [description, n_vacancies, date_hour, id_local,img,id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Workshop Editado" })
     })
@@ -29,7 +29,7 @@ function updateWorkshops(id,description, n_vacancies, date_hour, price, id_local
 
 // Retorna todos os workshops
 function getWorkshops(callback) {
-    const sql = "SELECT id_workshop, inscricao_workshop.nome, nr_vagas, data_hora, institucao.nome as local,inscricao_workshop.descritivo,img FROM inscricao_workshop, institucao WHERE institucao.id_ipp = inscricao_workshop.id_localizacao "
+    const sql = "SELECT id_workshop, inscricao_workshop.nome, nr_vagas, data_hora, institucao.nome as local, inscricao_workshop.descritivo, img FROM inscricao_workshop, institucao WHERE institucao.id_ipp = inscricao_workshop.id_localizacao "
     connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
