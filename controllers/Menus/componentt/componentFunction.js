@@ -35,7 +35,8 @@ function getComponentsId(id, callback) {
     })
 }
 function getAllComponents( callback) {
-    const sql = "SELECT * FROM componente "
+    connection
+    const sql = "SELECT id_componente, descritivo FROM componente "
     connection.query(sql, function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
