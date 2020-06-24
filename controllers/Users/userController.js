@@ -124,11 +124,13 @@ class verifyLogin {
         let email = req.body.email
 
         userFunctions.login(pass, email, (error, sucess) => {
-            if (error) {
-                throw error
-                return
+            if (!error) {
+
+                result.json(sucess)
             }
-            result.json(sucess)
+            else {
+                result.json(error)
+            }
         })
     }
     landingPage(result) {
@@ -150,4 +152,4 @@ function logout(req, result) {
     })
 }
 
-module.exports = { updateTypeUserC:updateTypeUserC,updateTypeUserA: updateTypeUserA, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }
+module.exports = { updateTypeUserC: updateTypeUserC, updateTypeUserA: updateTypeUserA, addUser: addUser, removeUser: removeUser, updateUser: updateUser, getUser: getUser, getSchool: getSchool, getUserID: getUserID, verifyLogin: verifyLogin, logout: logout }
