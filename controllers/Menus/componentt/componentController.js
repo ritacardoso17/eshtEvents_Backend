@@ -49,10 +49,21 @@ function getComponentsId(req, result) {
         result.json(sucess)
     })
 }
+function getAllComponents(req, result) {
+   
+    componentFunctions.getAllComponents((error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 
 module.exports = { 
     addComponents: addComponents,
     removeComponents: removeComponents,
     getComponents: getComponents,
-    getComponentsId: getComponentsId
+    getComponentsId: getComponentsId,
+    getAllComponents:getAllComponents
  }
