@@ -1,5 +1,4 @@
-const mySql = require("mysql")
-var connection = mySql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
+let connection = require('../../database/dbConfig.js')
 
 //retorna a informaçao de um extra selecionada apartir do id
 function getStateId( id, callback){

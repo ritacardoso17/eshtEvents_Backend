@@ -1,10 +1,7 @@
-// const dbConfig = require("../../database/dbConfig.json")
 const jsonwebtoken = require('jsonwebtoken')
 const config = require("../../config.json")
 const bcrypt = require("bcrypt")
-const mySql = require("mysql")
-var connection = mySql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
-// var connection = mySql.createConnection(dbConfig)
+let connection = require('../../database/dbConfig.js')
 
 //login com email e password
 function login(pass, email, callback) {

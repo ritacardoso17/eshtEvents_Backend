@@ -1,7 +1,4 @@
-/* const dbConfig = require("../../../database/dbConfig.json") */
-const mySql = require("mysql")
-var connection = mySql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
-// var connection = mySql.createConnection(dbConfig)
+let connection = require('../../../database/dbConfig.js')
 
 //retorna dados da tabela decoracao da base de dados
 function getDecoration(id, description, img, callback) {

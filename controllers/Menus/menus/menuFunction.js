@@ -1,7 +1,4 @@
-// const dbConfig = require("../../../database/dbConfig.json")
-const mySql = require("mysql")
-var connection = mySql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
-// var connection = mySql.createConnection(dbConfig)
+let connection = require('../../../database/dbConfig.js')
 
 // Adiciona menus
 function addMenu(description, id_tipo_reserva, img, callback) {

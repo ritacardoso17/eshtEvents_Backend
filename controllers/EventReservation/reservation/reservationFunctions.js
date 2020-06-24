@@ -1,7 +1,4 @@
-/* const dbConfig = require("../../../database/dbConfig.json") */
-const mySql = require("mysql")
-var connection = mySql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
-// var connection = mySql.createConnection(dbConfig)
+let connection = require('../../../database/dbConfig.js')
 
 //funcao criada para adicionar uma reserva a base de dados
 function addReservations(id_extra, id_user, n_people, date_reserv, date_required, id_uniform, id_reservType, id_menu, id_local, id_decoration, obs, callback) {

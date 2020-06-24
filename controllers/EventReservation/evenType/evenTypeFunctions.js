@@ -1,7 +1,4 @@
-/* const dbConfig = require("../../../database/dbConfig.json") */
-const mySql = require("mysql")
-var connection = mySql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
-// var connection = mySql.createConnection(dbConfig)
+let connection = require('../../../database/dbConfig.js')
 
 //Retorna todos os dados da tabela tipo_reserva da base de dados
 function getEvenType(callback) {

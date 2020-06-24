@@ -1,16 +1,13 @@
 const jsonwebtoken = require('jsonwebtoken')
-// const dbConfig = require('./database/dbConfig.json')
 const config = require("./config.json")
-const mysql = require("mysql")
-var connection = mysql.createConnection({ host: process.env.host, user: process.env.user, password: process.env.password, database: process.env.database })
-// var connection = mySql.createConnection(dbConfig)
+let connection = require('./database/dbConfig.js')
+
 function verifyToken(req, res, next) {
     let token = req.headers['x-access-token'] || req.headers['authorization']
     if (token.startsWith('Bearer ')) {
         token = token.slice(7, token.length)
     }
     const sql = "SELECT token FROM token_bloqueado WHERE token=?"
-    connection 
     connection.query(sql, [token], function (error, rows, fields) {
         if (rows.length != 0) { return res.json({ success: false, message: "Token Bloqueado" }) }
         else if (rows.length == 0) {
@@ -24,7 +21,6 @@ function verifyToken(req, res, next) {
             })
         }
     })
-    connection 
 }
 
 module.exports = { verifyToken: verifyToken } 
