@@ -5,72 +5,54 @@ var connection = mySql.createConnection({ host: process.env.host, user: process.
 
 // Adiciona aluguer de espaços
 function addRents(id_user, date_reserv, date_required, duration, id_room, reason, callback) {
-    connection 
-
     const sql = "INSERT INTO aluguer_espaco (id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, motivo, opiniao) VALUES (?,?,?,?,?,?,?,?)"
     connection.query(sql, [id_user, date_reserv, date_required, duration, 1, id_room, reason, "Ainda sem opinião"], function (error, rows,fields) {
         if (error) callback(error)
         callback(null, { sucess: true, message: rows })
     })
-
-    connection 
 }
 
 // Remove os dados dos alugueres consoante o id escolhido
 function removeRents(id, callback) {
-    connection 
-
     const sql = "DELETE FROM aluguer_espaco WHERE id_aluguer = ?"
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Aluguer Removido" })
     })
-
-    connection 
 }
 
 // Retorna todos os dados dos alugueres
 function getRents(callback) {
-    connection 
-
     const sql = "SELECT id_aluguer,id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao FROM aluguer_espaco"
     connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
-    connection 
-
 }
 
 // Retorna os dados dos espaços escolhidos consoante o id
 function getRentsId( id, callback){
-    connection 
-
     const sql = "SELECT id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao FROM aluguer_espaco WHERE id_aluguer=?"
     connection.query(sql, [id], function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
-    connection 
 }
 function getRentsUserId(id, callback) {
-    connection 
     const sql = "SELECT id_aluguer,id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, estado.descritivo as estado, tipo_espaco.descritivo as tipo_espaco, opiniao FROM aluguer_espaco,estado,tipo_espaco WHERE id_utilizador=? AND estado.id_estado=aluguer_espaco.id_estado AND tipo_espaco.id_espaco = aluguer_espaco.id_espaco  "
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
-    connection 
 }
+
 //edita os dados da opinião de uma reserva consoante o seu id
 function updateOpinion(opinion, id, callback) {
-    connection
     const sql = "UPDATE aluguer_espaco SET opiniao=? WHERE id_aluguer = ? "
     connection.query(sql, [opinion, id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Opinião Editada" })
     })
-    connection
 }
 
 module.exports = { 
