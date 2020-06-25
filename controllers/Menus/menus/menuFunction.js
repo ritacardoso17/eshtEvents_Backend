@@ -22,9 +22,16 @@ function removeMenu(id, callback) {
 function updateMenu(id, id_tipo_reserva, description, img, id_componente, callback) {
     const sql = "UPDATE menu SET id_tipo_reserva=?, descritivo=?,img=? WHERE id_menu=? "
     connection.query(sql, [id_tipo_reserva, description, img, id], function (error, results) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: "Menu Editado" })
-        removeMenuComponent(id, id_componente)
+        if (!error) {
+            callback(null, { sucess: true, message: "Menu Editado" })
+            removeMenuComponent(id, id_componente)
+        }
+        else {
+            callback(error)
+        }
+
+
+
     })
 }
 function removeMenuComponent(id, id_componente, callback) {
