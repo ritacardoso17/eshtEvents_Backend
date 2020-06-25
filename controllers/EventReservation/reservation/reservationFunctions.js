@@ -48,7 +48,7 @@ function updateOpinion(opinion, id, callback) {
         callback(null, { sucess: true, message: "Opinião Editada" })
     })
 }
-function updateState(id, id_estado, callback) {
+function updateState(id, tipoEstado, callback) {
     if (tipoEstado == "Pendente") {
         const sql = "UPDATE reserva_evento SET id_estado=2 WHERE id_reserva = ? "
         connection.query(sql, [id], function (error, results) {
