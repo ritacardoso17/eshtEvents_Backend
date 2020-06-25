@@ -10,4 +10,5 @@ router.get("/reservations",middleware.verifyToken, controller.getReservations)
 router.get("/reservations/:id", controller.getReservationsUserId)
 router.put("/reservOpinions/:id", controller.updateOpinion)
 router.put("/changeStatus/:id", middleware.verifyToken,controller.updateState)
+router.put("/changeStatus/:id", middleware.verifyToken,controller.updateStateCancel)
 module.exports = router

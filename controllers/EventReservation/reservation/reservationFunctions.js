@@ -57,7 +57,17 @@ function updateState(id, tipoEstado, callback) {
             callback(null, { sucess: true, message: "Opinião Editada" })
         })
     }
-    
+
+}
+function updateStateCancel(id, tipoEstado, callback) {
+    console.log(tipoEstado)
+    if (tipoEstado === "Pendente" || tipoEstado === "Aceite") {
+        const sql = "UPDATE reserva_evento SET id_estado=? WHERE id_reserva = ? "
+        connection.query(sql, [3,id], function (error, results) {
+            if (error) callback(error)
+            callback(null, { sucess: true, message: "Opinião Editada" })
+        })
+    }
 
 }
 
@@ -68,5 +78,6 @@ module.exports = {
     getReservationsId: getReservationsId,
     getReservationsUserId: getReservationsUserId,
     updateOpinion: updateOpinion,
-    updateState: updateState
+    updateState: updateState,
+    updateStateCancel:updateStateCancel
 }
