@@ -42,7 +42,7 @@ function removeMenuComponent(id, id_componente, callback) {
 }
 
 function addMenuComponent(id_menu, id_componente, callback) {
-    for (let i = 0; i < id_componente.lenght; i++) {
+    for (let i = 0; i < id_componente.length; i++) {
         const sql = "INSERT INTO menu_prato (id_menu,id_componente) VALUES (?, ?)"
         connection.query(sql, [id_menu, id_componente[i]], function (error, results) {
 
