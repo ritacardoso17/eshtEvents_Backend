@@ -4,8 +4,14 @@ let connection = require('../../../database/dbConfig.js')
 function addMenu(description, id_tipo_reserva, img, callback) {
     const sql = "INSERT INTO menu (id_tipo_reserva,descritivo,img) VALUES (?, ?,?)"
     connection.query(sql, [id_tipo_reserva, description, img], function (error, results) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: "Menu Adicionada" })
+
+        if (!error) {
+            callback(null, { sucess: true, message: "Menu Adicionada" })
+            addMenuComponent(results.insertId, id_componente)
+        }
+        else {
+            callback(error)
+        }
     })
 }
 /**FAZER FUNÇOES PARA ALTERAR O RESTO DAS TABELAS */
