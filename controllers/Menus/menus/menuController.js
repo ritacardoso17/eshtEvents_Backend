@@ -4,8 +4,9 @@ const menuFunctions = require("./menuFunction")
 function addMenu(req, result) {
     let description = req.body.description
     let id_tipo_reserva = req.body.id_tipo_reserva
-    let img = req.file
-    menuFunctions.addMenu(description, id_tipo_reserva, img.path, (error, sucess) => {
+    let  id_componente = req.body. id_componente
+    let img = req.body.img
+    menuFunctions.addMenu(description, id_tipo_reserva,id_componente, img, (error, sucess) => {
         if (error) {
             throw error
             return

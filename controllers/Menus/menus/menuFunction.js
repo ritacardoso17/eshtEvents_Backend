@@ -1,7 +1,7 @@
 let connection = require('../../../database/dbConfig.js')
 
 // Adiciona menus
-function addMenu(description, id_tipo_reserva, img, callback) {
+function addMenu(description, id_tipo_reserva, img,id_componente, callback) {
     const sql = "INSERT INTO menu (id_tipo_reserva,descritivo,img) VALUES (?, ?,?)"
     connection.query(sql, [id_tipo_reserva, description, img], function (error, results) {
 
