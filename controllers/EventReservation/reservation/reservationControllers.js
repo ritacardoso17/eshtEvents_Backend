@@ -85,7 +85,7 @@ function updateOpinion(req, result) {
 function updateState(req, result) {
     let id = req.params.id
     let tipoEstado = req.body.tipoEstado
-    reservationFunctions.updateState(id,tipoEstado, (error, sucess) => {
+    reservationFunctions.updateState(tipoEstado,id, (error, sucess) => {
         if (error) {
             throw error
             return
