@@ -6,7 +6,7 @@ function addMenu(req, result) {
     let id_tipo_reserva = req.body.id_tipo_reserva
     let  id_componente = req.body. id_componente
     let img = req.body.img
-    menuFunctions.addMenu(description, id_tipo_reserva,id_componente, img, (error, sucess) => {
+    menuFunctions.addMenu(description, id_tipo_reserva, img,id_componente, (error, sucess) => {
         if (error) {
             throw error
             return
