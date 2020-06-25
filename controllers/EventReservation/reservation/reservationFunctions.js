@@ -18,7 +18,7 @@ function removeReservations(id, callback) {
 }
 //retorna todos os dados da tabela reerva_evento
 function getReservations(callback) {
-    const sql = "SELECT id_reserva,extra.descritivo as extra,utilizador.nome as user,nr_pessoas, data_hora_reserva, data_hora_evento,farda.descritivo as farda , tipo_reserva.descritivo as tipoReserva,estado.descritivo as estado, menu.descritivo as menu, institucao.nome as escola, decoracao.descritivo as decoracao, opiniao FROM reserva_evento,tipo_reserva,estado, extra, farda,utilizador WHERE tipo_reserva.id_tipo_reserva = reserva_evento.id_tipo_reserva AND utilizador.id_utilizador=reserva_evento.id_utilizador AND estado.id_estado = reserva_evento.id_estado AND extra.id_extra = reserva_evento.id_extra AND farda.id_farda=reserva_evento.id_farda"
+    const sql = "SELECT id_reserva,extra.descritivo as extra,utilizador.nome as user,nr_pessoas, data_hora_reserva, data_hora_evento,farda.descritivo as farda , tipo_reserva.descritivo as tipoReserva,estado.descritivo as estado, menu.descritivo as menu, institucao.nome as escola, decoracao.descritivo as decoracao, opiniao FROM reserva_evento,tipo_reserva,estado, extra, farda,utilizador,menu,institucao,decoracao WHERE tipo_reserva.id_tipo_reserva = reserva_evento.id_tipo_reserva AND utilizador.id_utilizador=reserva_evento.id_utilizador AND estado.id_estado = reserva_evento.id_estado AND extra.id_extra = reserva_evento.id_extra AND farda.id_farda=reserva_evento.id_farda"
     connection.query(sql, function (error, results) {
         if (error) callback(error)
         callback(null, { message:results })
