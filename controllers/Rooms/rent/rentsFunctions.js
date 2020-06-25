@@ -20,7 +20,7 @@ function removeRents(id, callback) {
 
 // Retorna todos os dados dos alugueres
 function getRents(callback) {
-    const sql = "SELECT id_aluguer,id_utilizador, data_hora_aluguer, data_hora_requirida, duracao, id_estado, id_espaco, opiniao FROM aluguer_espaco"
+    const sql = "SELECT id_aluguer,utilizador.nome as user, data_hora_aluguer, data_hora_requirida, duracao, estado.descritivo as estado, tipo_espaco.descritivo as espaco, opiniao FROM aluguer_espaco"
     connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
