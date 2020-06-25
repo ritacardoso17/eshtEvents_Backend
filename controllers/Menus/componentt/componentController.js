@@ -28,7 +28,7 @@ function removeComponents(req, result) {
 function getComponents(req, result) {
     let id = req.params.id
 
-    componentFunctions.getComponents(id, name, (error, sucess) => {
+    componentFunctions.getComponents(id,(error, sucess) => {
         if (error) {
             throw error
             return
