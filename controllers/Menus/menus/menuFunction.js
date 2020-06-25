@@ -5,9 +5,9 @@ function addMenu(description, id_tipo_reserva, img, id_componente, callback) {
     const sql = "INSERT INTO menu (id_tipo_reserva,descritivo,img) VALUES (?, ?,?)"
     connection.query(sql, [id_tipo_reserva, description, img], function (error, results) {
         let id = results.insertId
-        addMenuComponent(id, id_componente)
+         addMenuComponent(id, id_componente)
         if (!error) {
-            callback(null, { sucess: true, message: "Menu Adicionada" })
+            callback(null, { sucess: true, message: "Menu Adicionada", id:id })
            
         }
         else {
@@ -41,14 +41,14 @@ function updateMenu(id, id_tipo_reserva, description, img, id_componente, callba
 
     })
 }
-function removeMenuComponent(id, id_componente, callback) {
+function removeMenuComponent(id, id_componente) {
     const sql = "DELETE FROM menu_prato WHERE id_menu = ? "
     connection.query(sql, [id], function (error, results) {
         addMenuComponent(id, id_componente)
     })
 }
 
-function addMenuComponent(id_menu, id_componente, callback) {
+function addMenuComponent(id_menu, id_componente) {
     for (let i = 0; i < id_componente.length; i++) {
         const sql = "INSERT INTO menu_prato (id_menu,id_componente) VALUES (?, ?)"
         connection.query(sql, [id_menu, id_componente[i]], function (error, results) {
