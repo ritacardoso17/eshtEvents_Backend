@@ -33,7 +33,7 @@ function getReservationsId(id, callback) {
     })
 }
 function getReservationsUserId(id, callback) {
-    const sql = "SELECT id_reserva,id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, tipo_reserva.descritivo as tipoReserva,estado.descritivo as estado, id_menu, institucao.descritivo as localizacao, id_decoracao, opiniao FROM reserva_evento,tipo_reserva,estado WHERE id_utilizador=? AND tipo_reserva.id_tipo_reserva = reserva_evento.id_tipo_reserva AND institucao.descritivo = reserva_evento.i estado.id_estado = reserva_evento.id_estado "
+    const sql = "SELECT id_reserva,id_extra, id_utilizador, nr_pessoas, data_hora_reserva, data_hora_evento, id_farda, tipo_reserva.descritivo as tipoReserva,estado.descritivo as estado, id_menu, id_localizacao, id_decoracao, opiniao FROM reserva_evento,tipo_reserva,estado WHERE id_utilizador=? AND tipo_reserva.id_tipo_reserva = reserva_evento.id_tipo_reserva AND estado.id_estado = reserva_evento.id_estado"
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
