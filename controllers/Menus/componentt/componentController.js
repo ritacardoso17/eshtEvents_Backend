@@ -28,7 +28,7 @@ function removeComponents(req, result) {
 function getComponentsMenus(req, result) {
     let id = req.params.id
 
-    componentFunctions.getComponents(id,(error, sucess) => {
+    componentFunctions.getComponentsMenus(id,(error, sucess) => {
         if (error) {
             throw error
             return
@@ -37,9 +37,7 @@ function getComponentsMenus(req, result) {
     })
 }
 function getComponents(req, result) {
-    let id = req.params.id
-
-    componentFunctions.getComponents(id,(error, sucess) => {
+    componentFunctions.getComponents((error, sucess) => {
         if (error) {
             throw error
             return

@@ -26,9 +26,9 @@ function getComponentsMenus(id,callback) {
     })
         
 }
-function getComponents(id,callback) {
+function getComponents(callback) {
     const sql = "SELECT menu.id_menu, componente.descritivo FROM componente, menu, menu_prato WHERE menu_prato.id_menu = menu.id_menu AND menu_prato.id_componente = componente.id_componente"
-    connection.query(sql, [id], function (error, results) {
+    connection.query(sql, function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
     })
