@@ -18,8 +18,16 @@ function removeComponents(id, callback) {
     })
 }
 //retorna dados da tabela componete
-function getComponents(id,callback) {
+function getComponentsMenus(id,callback) {
     const sql = "SELECT componente.id_componente,componente.descritivo FROM componente, menu, menu_prato WHERE menu.id_menu = ?  AND menu.id_menu = menu_prato.id_menu AND componente.id_componente = menu_prato.id_componente"
+    connection.query(sql, [id], function (error, results) {
+        if (error) callback(error)
+        callback(null, { sucess: true, message: results })
+    })
+        
+}
+function getComponents(id,callback) {
+    const sql = "SELECT menu.id_menu, componente.descritivo FROM componente, menu, menu_prato WHERE menu_prato.id_menu = menu.id_menu AND menu_prato.id_componente = componente.id_componente"
     connection.query(sql, [id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
@@ -44,6 +52,7 @@ function getAllComponents( callback) {
 }
 
 module.exports = {
+    getComponentsMenus:getComponentsMenus,
     getAllComponents:getAllComponents,
     addComponents: addComponents,
     removeComponents: removeComponents,

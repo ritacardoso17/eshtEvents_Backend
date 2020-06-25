@@ -25,6 +25,17 @@ function removeComponents(req, result) {
     })
 }
 
+function getComponentsMenus(req, result) {
+    let id = req.params.id
+
+    componentFunctions.getComponents(id,(error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 function getComponents(req, result) {
     let id = req.params.id
 
@@ -59,7 +70,8 @@ function getAllComponents(req, result) {
     })
 }
 
-module.exports = { 
+module.exports = {
+    getComponentsMenus:getComponentsMenus, 
     addComponents: addComponents,
     removeComponents: removeComponents,
     getComponents: getComponents,
