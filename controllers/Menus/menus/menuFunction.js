@@ -19,29 +19,29 @@ function removeMenu(id, callback) {
 }
 
 // Altera os dados dos menus consoante o id escolhido
-function updateMenu(id, id_tipo_reserva, description, img,id_componente, callback) {
+function updateMenu(id, id_tipo_reserva, description, img, id_componente, callback) {
     const sql = "UPDATE menu SET id_tipo_reserva=?, descritivo=?,img=? WHERE id_menu=? "
     connection.query(sql, [id_tipo_reserva, description, img, id], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Menu Editado" })
-        removeMenuComponent(id,id_componente)
+        removeMenuComponent(id, id_componente)
     })
 }
-function removeMenuComponent(id,id_componente, callback) {
-    const sql = "DELETE FROM menu_prato WHERE id_menu = ? AND id_componente=?"
-    connection.query(sql, [id,id_componente], function (error, results) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: "Menu Removido" })
-        addMenuComponent(id,id_componente)
+function removeMenuComponent(id, id_componente, callback) {
+    const sql = "DELETE FROM menu_prato WHERE id_menu = ? "
+    connection.query(sql, [id], function (error, results) {
+        addMenuComponent(id, id_componente)
     })
 }
 
-function addMenuComponent( id_menu,id_componente, callback) {
-    const sql = "INSERT INTO menu_prato (id_menu,id_componente) VALUES (?, ?)"
-    connection.query(sql, [id_menu,id_componente], function (error, results) {
-        if (error) callback(error)
-        callback(null, { sucess: true, message: "Menu Adicionada" })
-    })
+function addMenuComponent(id_menu, id_componente, callback) {
+    for (let i = 0; i < id_componente.lenght; i++) {
+        const sql = "INSERT INTO menu_prato (id_menu,id_componente) VALUES (?, ?)"
+        connection.query(sql, [id_menu, id_componente[i]], function (error, results) {
+
+        })
+    }
+
 }
 
 // Retorna os dados de todos os menus
