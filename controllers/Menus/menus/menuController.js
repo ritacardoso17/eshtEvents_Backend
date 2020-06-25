@@ -4,7 +4,7 @@ const menuFunctions = require("./menuFunction")
 function addMenu(req, result) {
     let description = req.body.description
     let id_tipo_reserva = req.body.id_tipo_reserva
-    let  id_componente = req.body. id_componente
+    let  id_componente = req.body.id_componente
     let img = req.body.img
     menuFunctions.addMenu(description, id_tipo_reserva, img,id_componente, (error, sucess) => {
         if (error) {
@@ -29,7 +29,7 @@ function removeMenu(req, result) {
 
 function updateMenu(req, result) {
     let id = req.params.id
-    let  id_componente = req.body. id_componente
+    let  id_componente = req.body.id_componente
     let id_tipo_reserva = req.body.id_tipo_reserva
     let description = req.body.description
     let img = req.body.img
