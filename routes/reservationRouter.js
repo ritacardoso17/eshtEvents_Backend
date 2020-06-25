@@ -9,5 +9,5 @@ router.get("/reservations",middleware.verifyToken, controller.getReservations)
 // router.get("/reservations/:id", middleware.verifyToken, controller.getReservationsId)
 router.get("/reservations/:id", controller.getReservationsUserId)
 router.put("/reservOpinions/:id", controller.updateOpinion)
-
+router.put("/changeStatus/:id", middleware.verifyToken,controller.updateState)
 module.exports = router

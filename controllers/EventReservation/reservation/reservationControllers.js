@@ -82,6 +82,17 @@ function updateOpinion(req, result) {
         result.json(sucess)
     })
 }
+function updateState(req, result) {
+    let id = req.params.id
+    let tipoEstado = req.body.tipoEstado
+    reservationFunctions.updateState(id,tipoEstado, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 
 module.exports = {
     addReservations: addReservations,
@@ -89,5 +100,6 @@ module.exports = {
     getReservations: getReservations,
     getReservationsId: getReservationsId,
     getReservationsUserId: getReservationsUserId,
-    updateOpinion: updateOpinion
+    updateOpinion: updateOpinion,
+    updateState:updateState
 }
