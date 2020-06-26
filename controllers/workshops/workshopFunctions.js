@@ -57,7 +57,7 @@ function addUserWorkshops(id_user, id_workshop, callback) {
                     connection.query(sql2, [vagasUpdate], function (error, results) { 
                          callback(null, { message: "Inscrito no Workshop" }) })
                 }
-
+                console.log(vagasUpdate)
             })
           
         }
