@@ -29,7 +29,7 @@ function updateWorkshops(id,description, n_vacancies, date_hour, id_local,img, c
 
 // Retorna todos os workshops
 function getWorkshops(callback) {
-    const sql = "SELECT id_workshop, inscricao_workshop.nome, nr_vagas, data_hora, institucao.nome as local, inscricao_workshop.descritivo, img FROM inscricao_workshop, institucao WHERE institucao.id_ipp = inscricao_workshop.id_localizacao "
+    const sql = "SELECT id_workshop, inscricao_workshop.nome as name, nr_vagas, data_hora, institucao.nome as local, inscricao_workshop.descritivo as info, img FROM inscricao_workshop, institucao WHERE institucao.id_ipp = inscricao_workshop.id_localizacao "
     connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
