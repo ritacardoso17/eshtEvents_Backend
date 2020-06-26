@@ -49,23 +49,25 @@ function addUserWorkshops(id_user, id_workshop, callback) {
     const sql = "INSERT INTO workshop_utilizador (id_utilizador, id_workshop) VALUES (?,?)"
     connection.query(sql, [id_user, id_workshop], function (error, results) {
         if (!error) {
-            const sql1 = "SELECT nr_vagas FROM inscricao_workshop WHERE id_workshop=?"
-            connection.query(sql1, [id_workshop], function (error, rows, fields) {
-                let vagasUpdate = rows[0].nr_vagas - 1
-                if (!error) {
-                    const sql2 = "UPDATE inscricao_workshop SET nr_vagas=? WHERE id_workshop=?"
-                    connection.query(sql2, [vagasUpdate,id_workshop], function (error, results) { 
-                         callback(null, { message: "Inscrito no Workshop" }) })
-                }
-                console.log(vagasUpdate)
-            })
-          
+            updateVagas(id_workshop)
         }
         else { callback(error) }
 
     })
 }
-
+function updateVagas(id_workshop) {
+    const sql1 = "SELECT nr_vagas FROM inscricao_workshop WHERE id_workshop=?"
+    connection.query(sql1, [id_workshop], function (error, rows, fields) {
+        let vagasUpdate = rows[0].nr_vagas - 1
+        if (!error) {
+            const sql2 = "UPDATE inscricao_workshop SET nr_vagas=? WHERE id_workshop=?"
+            connection.query(sql2, [vagasUpdate, id_workshop], function (error, results) {
+                callback(null, { message: "Inscrito no Workshop" })
+            })
+        }
+        console.log(vagasUpdate)
+    })
+}
 
 
 module.exports = {
