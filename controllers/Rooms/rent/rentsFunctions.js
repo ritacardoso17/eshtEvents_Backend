@@ -52,6 +52,7 @@ function updateOpinion(opinion, id, callback) {
     })
 }
 function updateState(id, tipoEstado, callback) {
+    console.log(id)
     if (tipoEstado === "Pendente") {
         const sql = "UPDATE aluguer_espaco SET id_estado=? WHERE id_aluguer = ? "
         connection.query(sql, [2,id], function (error, results) {
@@ -62,6 +63,7 @@ function updateState(id, tipoEstado, callback) {
 
 }
 function updateStateCancel(id, tipoEstado, callback) {
+    console.log(id)
     if (tipoEstado === "Pendente" || tipoEstado === "Aceite") {
         const sql = "UPDATE aluguer_espaco SET id_estado=? WHERE id_aluguer = ? "
         connection.query(sql, [3,id], function (error, results) {
