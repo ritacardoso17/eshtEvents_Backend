@@ -75,12 +75,35 @@ function updateOpinion(req, result) {
         result.json(sucess)
     })
 }
-
+function updateState(req, result) {
+    let id = req.params.id
+    let tipoEstado = req.body.tipoEstado
+    rentsFunctions.updateState(id,tipoEstado, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
+function updateStateCancel(req, result) {
+    let id = req.params.id
+    let tipoEstado = req.body.tipoEstado
+    rentsFunctions.updateStateCancel(id,tipoEstado, (error, sucess) => {
+        if (error) {
+            throw error
+            return
+        }
+        result.json(sucess)
+    })
+}
 module.exports = { 
     addRents: addRents,
     removeRents: removeRents,
     getRents: getRents,
     getRentsId: getRentsId,
     getRentsUserId: getRentsUserId,
-    updateOpinion: updateOpinion
+    updateOpinion: updateOpinion,
+    updateState:updateState,
+    updateStateCancel:updateStateCancel
 }
