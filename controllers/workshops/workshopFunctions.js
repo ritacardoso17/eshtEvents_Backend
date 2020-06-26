@@ -54,7 +54,7 @@ function addUserWorkshops(id_user, id_workshop, callback) {
                 let vagasUpdate = rows[0].nr_vagas - 1
                 if (!error) {
                     const sql2 = "UPDATE inscricao_workshop SET nr_vagas=? WHERE id_workshop=?"
-                    connection.query(sql2, [vagasUpdate], function (error, results) { 
+                    connection.query(sql2, [vagasUpdate,id_workshop], function (error, results) { 
                          callback(null, { message: "Inscrito no Workshop" }) })
                 }
                 console.log(vagasUpdate)
