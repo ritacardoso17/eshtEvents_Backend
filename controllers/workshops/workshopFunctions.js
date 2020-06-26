@@ -2,7 +2,7 @@ let connection = require('../../database/dbConfig.js')
 
 // Adiciona os workshops
 function addWorkshops(description, n_vacancies, date_hour, id_local, img, callback) {
-    const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, id_localizacao, img) VALUES (?,?,?,?,?)"
+    const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, locutor, id_localizacao, img) VALUES (?,?,?,?,?,?)"
     connection.query(sql, [description, n_vacancies, date_hour, id_local,img], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Workshop Adicionado" })
@@ -29,7 +29,7 @@ function updateWorkshops(id,description, n_vacancies, date_hour, id_local,img, c
 
 // Retorna todos os workshops
 function getWorkshops(callback) {
-    const sql = "SELECT id_workshop, inscricao_workshop.nome as name, nr_vagas, data_hora, institucao.nome as local, inscricao_workshop.descritivo as info, img FROM inscricao_workshop, institucao WHERE institucao.id_ipp = inscricao_workshop.id_localizacao "
+    const sql = "SELECT id_workshop, inscricao_workshop.nome as name, nr_vagas, data_hora, locutor, institucao.nome as local, inscricao_workshop.descritivo as info, img FROM inscricao_workshop, institucao WHERE institucao.id_ipp = inscricao_workshop.id_localizacao "
     connection.query(sql, function(error, results){
         if (error) callback(error)
         callback(null, { sucess: true, message: results })
