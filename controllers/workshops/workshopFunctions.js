@@ -55,7 +55,7 @@ function addUserWorkshops(id_user, id_workshop, callback) {
 
     })
 }
-function updateVagas(id_workshop) {
+function updateVagas(id_workshop,callback) {
     const sql1 = "SELECT nr_vagas FROM inscricao_workshop WHERE id_workshop=?"
     connection.query(sql1, [id_workshop], function (error, rows, fields) {
         let vagasUpdate = rows[0].nr_vagas - 1
