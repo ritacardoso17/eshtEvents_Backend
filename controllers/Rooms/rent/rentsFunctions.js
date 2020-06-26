@@ -51,6 +51,26 @@ function updateOpinion(opinion, id, callback) {
         callback(null, { sucess: true, message: "Opinião Editada" })
     })
 }
+function updateState(id, tipoEstado, callback) {
+    if (tipoEstado === "Pendente") {
+        const sql = "UPDATE aluguer_espaco SET id_estado=? WHERE id_aluguer = ? "
+        connection.query(sql, [2,id], function (error, results) {
+            if (error) callback(error)
+            callback(null, { sucess: true, message: "Opinião Editada" })
+        })
+    }
+
+}
+function updateStateCancel(id, tipoEstado, callback) {
+    if (tipoEstado === "Pendente" || tipoEstado === "Aceite") {
+        const sql = "UPDATE aluguer_espaco SET id_estado=? WHERE id_aluguer = ? "
+        connection.query(sql, [3,id], function (error, results) {
+            if (error) callback(error)
+            callback(null, { sucess: true, message: "Opinião Editada" })
+        })
+    }
+
+}
 
 module.exports = { 
     addRents: addRents,
@@ -58,5 +78,7 @@ module.exports = {
     getRents: getRents,
     getRentsId: getRentsId,
     getRentsUserId: getRentsUserId,
-    updateOpinion: updateOpinion
+    updateOpinion: updateOpinion,
+    updateState:updateState,
+    updateStateCancel:updateStateCancel
 }
