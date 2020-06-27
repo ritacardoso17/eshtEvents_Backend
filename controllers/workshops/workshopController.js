@@ -6,10 +6,9 @@ function addWorkshops(req, result) {
     let n_vacancies = req.body.n_vacancies
     let date_hour = req.body.date_hour
     let teacher = req.body.teacher
-    let price = req.body.price
     let id_local = req.body.id_local
-    let img = req.file
-    workshopFunctions.addWorkshops(description, n_vacancies, date_hour, teacher, price, id_local, img.path, (error, sucess) => {
+    let img = req.body.img
+    workshopFunctions.addWorkshops(description, n_vacancies, date_hour, teacher, id_local, img, (error, sucess) => {
         if (error) {
             throw error
             return
