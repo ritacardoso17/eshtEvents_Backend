@@ -1,9 +1,9 @@
 let connection = require('../../database/dbConfig.js')
 
 // Adiciona os workshops
-function addWorkshops(description, n_vacancies, date_hour, id_local, img, callback) {
-    const sql = "INSERT INTO inscricao_workshop (descritivo, nr_vagas, data_hora, locutor, id_localizacao, img) VALUES (?,?,?,?,?,?)"
-    connection.query(sql, [description, n_vacancies, date_hour, id_local, img], function (error, results) {
+function addWorkshops(nome,description, n_vacancies, date_hour, id_local, img, callback) {
+    const sql = "INSERT INTO inscricao_workshop (nome,descritivo, nr_vagas, data_hora, locutor, id_localizacao, img) VALUES (?,?,?,?,?,?,?)"
+    connection.query(sql, [nome,description, n_vacancies, date_hour, id_local, img], function (error, results) {
         if (error) callback(error)
         callback(null, { sucess: true, message: "Workshop Adicionado" })
     })

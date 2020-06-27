@@ -2,13 +2,14 @@ const workshopFunctions = require("./workshopFunctions")
 
 // Utiliza as funções de workshops criadas e trata dos seus erros
 function addWorkshops(req, result) {
+    let nome = req.body.nome
     let description = req.body.description
     let n_vacancies = req.body.n_vacancies
     let date_hour = req.body.date_hour
     let teacher = req.body.teacher
     let id_local = req.body.id_local
     let img = req.body.img
-    workshopFunctions.addWorkshops(description, n_vacancies, date_hour, teacher, id_local, img, (error, sucess) => {
+    workshopFunctions.addWorkshops(nome,description, n_vacancies, date_hour, teacher, id_local, img, (error, sucess) => {
         if (error) {
             throw error
             return
