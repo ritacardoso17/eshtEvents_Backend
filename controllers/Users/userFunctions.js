@@ -5,7 +5,7 @@ let connection = require('../../database/dbConfig.js')
 
 //login com email e password
 function login(pass, email, callback) {
-    const sql = "SELECT id_utilizador,utilizador.id_tipoUser, utilizador.nome, utilizador.email_ipp, utilizador.password, utilizador.foto_perfil, data_nascimento, institucao.nome as school FROM utilizador,institucao WHERE email_ipp = ? && utilizador.id_ipp = institucao.id_ipp;"
+    const sql = "SELECT id_utilizador,utilizador.id_tipoUser, utilizador.nome, utilizador.email_ipp, utilizador.password, utilizador.foto_perfil, data_nascimento, telemovel, institucao.nome as school FROM utilizador,institucao WHERE email_ipp = ? && utilizador.id_ipp = institucao.id_ipp;"
     connection.query(sql, [email], function (error, rows, fields) {
         if (!error) {
             //compara a password inserida com a password retornada pelo email 
