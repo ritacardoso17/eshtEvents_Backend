@@ -19,10 +19,11 @@ function removeWorkshops(id, callback) {
 }
 
 // Altera certos elementos dos workshops
-function updateWorkshops(id, description, n_vacancies, date_hour, id_local, img, callback) {
-    const sql = "UPDATE inscricao_workshop SET descritivo=?, nr_vagas=?, data_hora=?, id_localizacao=?,img=? WHERE id_workshop=? "
-    connection.query(sql, [description, n_vacancies, date_hour, id_local, img, id], function (error, results) {
+function updateWorkshops(id, title, n_vacancies, date_hour, teacher, id_local, description, img, callback) {
+    const sql = "UPDATE inscricao_workshop SET nome=?, nr_vagas=?, data_hora=?, locutor=?, id_localizacao=?, descritivo=?, img=? WHERE id_workshop=? "
+    connection.query(sql, [title, n_vacancies, date_hour, teacher, id_local, description, img, id], function (error, results) {
         if (error) callback(error)
+        console.log(n_vacancies)
         callback(null, { sucess: true, message: "Workshop Editado" })
     })
 }

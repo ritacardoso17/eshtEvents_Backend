@@ -30,14 +30,14 @@ function removeWorkshops(req, result) {
 
 function updateWorkshops(req, result) {
     let id = req.params.id
+    let title = req.body.title
     let description = req.body.description
     let n_vacancies = req.body.n_vacancies
     let date_hour = req.body.date_hour
     let teacher = req.body.teacher
-    let price = req.body.price
     let id_local = req.body.id_local
-    let img = req.file
-    workshopFunctions.updateWorkshops(description, n_vacancies, date_hour, teacher, price, id_local,img.path,  id, (error, sucess) => {
+    let img = req.body.img
+    workshopFunctions.updateWorkshops(id, title, n_vacancies, date_hour, teacher, id_local, description, img, (error, sucess) => {
         if (error) {
             throw error
             return
