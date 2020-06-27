@@ -38,7 +38,7 @@ function updateWorkshops(req, result) {
     let teacher = req.body.teacher
     let id_local = req.body.id_local
     let img = req.body.img
-    workshopFunctions.updateWorkshops(id, title, description, n_vacancies, date_hour, teacher, id_local, img,  id, (error, sucess) => {
+    workshopFunctions.updateWorkshops(id, title, n_vacancies, date_hour, teacher, id_local, description, img, (error, sucess) => {
         if (error) {
             throw error
             return
