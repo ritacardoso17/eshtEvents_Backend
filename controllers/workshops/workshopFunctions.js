@@ -23,6 +23,7 @@ function updateWorkshops(id, title, n_vacancies, date_hour, teacher, id_local, d
     const sql = "UPDATE inscricao_workshop SET nome=?, nr_vagas=?, data_hora=?, locutor=?, id_localizacao=?, descritivo=?, img=? WHERE id_workshop=? "
     connection.query(sql, [title, n_vacancies, date_hour, teacher, id_local, description, img, id], function (error, results) {
         if (error) callback(error)
+        console.log(n_vacancies)
         callback(null, { sucess: true, message: "Workshop Editado" })
     })
 }
